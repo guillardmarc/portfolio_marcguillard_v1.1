@@ -35,10 +35,31 @@ GIT => Fait
         1. Entitée "Website" ------------------------------------------ => Fait
         2. Entitée "UpdateWebsite" ------------------------------------ => Fait
     3. Entitées en lien pour les réalisations:
-        1. Entitée "Achievements" ------------------------------------- => 
-        2. Entitée "Establishments" ----------------------------------- => 
+        1. Entitée "Achievements" ------------------------------------- => Fait
+        2. Entitée "Establishments" ----------------------------------- => Fait
         3. Entitée "PictureAchievements" ------------------------------ => Fait
         4. Entitée "WebTechnologies" ---------------------------------- => Fait
     4. Entitées en lien pour les parcours porfessionnel:
-        1. Liens vers l'entitée "Establishements" --------------------- => 
-        2. Entitée "ProfessionnalCareers" ----------------------------- => 
+        1. Liens vers l'entitée "Establishements" --------------------- => Fait
+        2. Entitée "ProfessionnalCareers" ----------------------------- => Fait
+GIT => Fait
+
+5. Création de fixture de donnée:
+    1. Installation du bundle "symfony data fixtures"------------------ => Fait
+    2. Installation du bundle "phpfaker"------------------------------- => Fait
+    3. Creation d'une fixture pour le compte "admin" ------------------ => Fait
+    4. Création d'une fixture pour la présentation -------------------- => Fait
+    5. Création d'une fixture pour les informations du site ----------- => Fait 
+    6. Création d'une fixture pour la mise à jour du site ------------- =>
+    7. Mise en plage des données de fixture dans la base de données --- =>
+GIT =>
+
+6. Création de service twig:
+    1. Création et configuration du service twig "Presentation" ------ =>
+    2. Création et configuration du service twig "Website" ----------- =>
+GIT =>
+
+7. Installation et configuration de "Webpack Encore":
+    1. Installation de "Webpack Encore" ------------------------------ =>
+    2. Configuration de "Webpack Encore" ----------------------------- =>
+GIT => 
