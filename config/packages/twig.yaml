@@ -1,6 +1,10 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
 
+    globals:
+        presentation: '@App\twigServices\PresentationsExtension'
+        website: '@App\twigServices\WebsitesExtension'
+
 when@test:
     twig:
         strict_variables: true

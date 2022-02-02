@@ -50,13 +50,14 @@ GIT => Fait
     3. Creation d'une fixture pour le compte "admin" ------------------ => Fait
     4. Création d'une fixture pour la présentation -------------------- => Fait
     5. Création d'une fixture pour les informations du site ----------- => Fait 
-    6. Création d'une fixture pour la mise à jour du site ------------- =>
-    7. Mise en plage des données de fixture dans la base de données --- =>
-GIT =>
+    6. Création d'une fixture pour la mise à jour du site ------------- => Fait
+    7. Mise en plage des données de fixture dans la base de données --- => Fait
+GIT => Fait
 
 6. Création de service twig:
-    1. Création et configuration du service twig "Presentation" ------ =>
-    2. Création et configuration du service twig "Website" ----------- =>
+    1. Création et configuration du service twig "Presentation" ------ => Fait
+    2. Création et configuration du service twig "Website" ----------- => Fait
+    3. Configuration du fichier "twig.yaml" -------------------------- => Fait
 GIT =>
 
 7. Installation et configuration de "Webpack Encore":
