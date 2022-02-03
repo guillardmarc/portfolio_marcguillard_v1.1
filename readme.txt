@@ -90,5 +90,5 @@ GIT => Fait
 12. Création et configuration du controleur "AdminPages":
     1. Création du controleur ------------------------------------------------------ =>
     2. Modifier du controleur ------------------------------------------------------ =>
-    
+GIT => Fait
 
