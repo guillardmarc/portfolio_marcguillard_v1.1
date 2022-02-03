@@ -1,0 +1,27 @@
+// _global.scss file
+
+// Background setting:
+    // Background magic 01 tag:
+    .bg-magic-01 {
+        background-image: radial-gradient(circle at top right, rgba($dark-custom, 0.8) 0%, rgba($dark-custom, 0.8) 28%,rgba($primary-custom, 0.8) 28%, rgba($primary-custom, 0.8) 45%,rgba($secondary-custom, 0.5) 45%, rgba($secondary-custom, 0.5) 63%,rgba($light-custom, 0.8) 63%, rgba($light-custom, 0.8) 100%);
+        background-attachment: fixed;
+        background-position: center;
+    }
+    // Background glass tag
+    .bg-glass {
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+// Media qurey setting:
+@media (min-width: 1199.98px) { 
+    .form-01 {
+        clip-path: polygon(30% 0, 100% 0%, 100% 100%, 0% 100%);
+        padding: 0;
+    }
+    .form-02 {
+        clip-path: polygon(0% 0%, 0% 100%, 70% 100%, 100% 0%);
+        padding: 0;
+    }
+}
