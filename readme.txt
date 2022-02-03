@@ -88,7 +88,12 @@ GIT => Fait
 GIT => Fait
 
 12. Création et configuration du controleur "AdminPages":
-    1. Création du controleur ------------------------------------------------------ =>
-    2. Modifier du controleur ------------------------------------------------------ =>
+    1. Création du controleur ------------------------------------------------------ => Fait
+    2. Modifier du controleur ------------------------------------------------------ => Fait
 GIT => Fait
 
+13. Modification du fichier "base.html.twig" --------------------------------------- => Fait
+GIT =>
+
+14. Création du fichier "base_admin.html.twig" ------------------------------------- => Fait
+GIT =>

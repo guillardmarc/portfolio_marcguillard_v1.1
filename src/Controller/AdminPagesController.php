@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminPagesController extends AbstractController
 {
     /**
-     * @Route("/admin/pages", name="admin_pages")
+     * @Route("/dashboard", name="app_dashboard")
      */
-    public function index(): Response
+    public function dashboard(): Response
     {
         return $this->render('admin_pages/index.html.twig', [
-            'controller_name' => 'AdminPagesController',
+            'controller_name' => 'DashboardController',
         ]);
     }
 }
