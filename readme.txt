@@ -58,9 +58,9 @@ GIT => Fait
     1. Création et configuration du service twig "Presentation" ------ => Fait
     2. Création et configuration du service twig "Website" ----------- => Fait
     3. Configuration du fichier "twig.yaml" -------------------------- => Fait
-GIT =>
+GIT => Fait
 
 7. Installation et configuration de "Webpack Encore":
-    1. Installation de "Webpack Encore" ------------------------------ =>
-    2. Configuration de "Webpack Encore" ----------------------------- =>
+    1. Installation de "Webpack Encore" ------------------------------ => Fait
+    2. Configuration de "Webpack Encore" ----------------------------- => Fait
 GIT => 

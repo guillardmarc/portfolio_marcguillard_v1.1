@@ -2,8 +2,8 @@ twig:
     default_path: '%kernel.project_dir%/templates'
 
     globals:
-        presentation: '@App\twigServices\PresentationsExtension'
-        website: '@App\twigServices\WebsitesExtension'
+        presentation: '@App\TwigServices\PresentationsExtension'
+        website: '@App\TwigServices\WebsitesExtension'
 
 when@test:
     twig:
