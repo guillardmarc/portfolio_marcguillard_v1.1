@@ -71,3 +71,9 @@ GIT => Fait
     3. Création du fichier "_nav.scss" contenant les balises de la div "nav" ------- => Fait
     4. Création du fichier "_main.scss" contenant les balises de la div "main" ----- => Fait
     5. Création du fichier "_footer.scss" contenant les balises de la div "footer" - => Fait
+GIT => Fait
+
+9. Installation et configuration de Bootstrap:
+    1. Installation de Bootstrap icon ---------------------------------------------- => Fait
+    2. Installation de Bootstrap scss ---------------------------------------------- => Fait
+    3. Configuration de Bootstrap scss --------------------------------------------- => Fait
