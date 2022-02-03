@@ -77,3 +77,18 @@ GIT => Fait
     1. Installation de Bootstrap icon ---------------------------------------------- => Fait
     2. Installation de Bootstrap scss ---------------------------------------------- => Fait
     3. Configuration de Bootstrap scss --------------------------------------------- => Fait
+GIT => Fait
+
+10. Configuration du fichier "app.scss": ------------------------------------------- => fait
+GIT => Fait
+
+11. Création et configuration du controleur "BasicPages":
+    1. Création du controleur ------------------------------------------------------ => Fait
+    2. Modification du controleur -------------------------------------------------- => Fait
+GIT => Fait
+
+12. Création et configuration du controleur "AdminPages":
+    1. Création du controleur ------------------------------------------------------ =>
+    2. Modifier du controleur ------------------------------------------------------ =>
+    
+
