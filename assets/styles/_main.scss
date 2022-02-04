@@ -2,5 +2,111 @@
 
 // Main setting:
 main {
+    // Title-job tag:
+    .title-job {
+        background: inherit;
+        background-clip: text;
+        font-size: 5rem;
+        color: transparent;
+        letter-spacing: 0.5;
+        -moz-background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-stroke-width: 1.5px;
+        -webkit-text-stroke-color: #fff;
+        -webkit-text-fill-color: transparent;
+    }
+
+    // Carrousel tags:
+        // Carrousel-indicators tags:
+        .carousel-indicators [data-bs-target] {
+            border-radius: 50%;
+            height: 5px;
+            width: 5px;
+        }
+
+        .carousel-indicators .active {
+            opacity: none;
+            mix-blend-mode: multiply;
+            border-radius: 50%;
+            height: 15px;
+            width: 15px;
+        }
+
+        // Carousel-control tags:
+        .carousel-control-prev, .carousel-control-next {
+            @extend .bg-magic-01;
+            border-radius: 50%;
+            bottom: 5% !important;
+            height: 50px;
+            mix-blend-mode: multiply;
+            top: 80% !important;
+            width: 50px;
+        }
     
+    // Card tags :
+    .card-hover {
+        border-radius: 50%;
+        height: 25vh;
+        width: 25vh;
+        .card-img-overlay {
+            border-radius: inherit;
+            @extend .overflow-auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 1s, opacity 1.5s linear;
+            overflow-y: scroll;
+            scrollbar-color:rgba(255, 255, 255, 0.3) #f1f1;
+            scrollbar-width: thin;
+            
+            &::-webkit-scrollbar {
+                background: #f1f1;
+                height: 50%;
+                width: 5px;
+            }
+            &::-webkit-scrollbar-thumb {
+                @extend .bg-glass;
+            }
+        }
+        &:hover, &:active {
+            .card-img-overlay {
+                visibility: visible;
+                opacity: 1;
+                overflow-y: scroll;
+                scrollbar-color:rgba(255, 255, 255, 0.3) #f1f1;
+                scrollbar-width: 5px;
+                
+                &::-webkit-scrollbar {
+                    background: #f1f1;
+                    //height: 50%;
+                    width: 5px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    @extend .bg-glass;
+                }
+                
+            }  
+        }
+    }
+
+    // List groupe column tags:
+    @media (min-width: 1199.98px) { 
+        .list-group-col-03 {
+            column-count: 3;}
+    }
+    .list-group-col-03 {
+        column-count: none;
+        list-style: none;
+        padding: 0 !important;
+
+        li {
+            border-left: $dark-custom 2px solid;
+            color: #fff;
+            padding-left: 0.5rem;
+
+            .circle {
+                float: left;
+                shape-outside: circle();
+            }
+        } 
+    }
 }

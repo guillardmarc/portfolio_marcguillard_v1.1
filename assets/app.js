@@ -13,3 +13,6 @@ import './bootstrap';
 
 // Plugins bootstrap
 import { Tooltip, Toast, Popover } from 'bootstrap';
+
+// Custom js
+import './custom'

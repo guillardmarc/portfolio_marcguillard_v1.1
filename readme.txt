@@ -93,7 +93,29 @@ GIT => Fait
 GIT => Fait
 
 13. Modification du fichier "base.html.twig" --------------------------------------- => Fait
-GIT =>
+GIT => Fait
 
 14. Création du fichier "base_admin.html.twig" ------------------------------------- => Fait
-GIT =>
+GIT => Fait
+
+15. Création du contenu et du design des fichiers :
+    1. Fichier "base.html.twig":
+        1. Configuration de "body" ------------------------------------------------- => Fait
+        2. Ajout et configuration de la section "nav" ------------------------------ => Fait
+        3. Ajout de la section "main" ---------------------------------------------- => Fait
+        4. Ajout et configuration de la section "footer" --------------------------- => Fait
+        5. Ajout d'un bouton de revoie vers le haut de la page --------------------- => Fait
+    GIT: Fait
+
+    2. Fichier "index.html.twig" du dossier "basic_pages":
+        1. Ajout et configuration de la section "Presentation" --------------------- => Fait
+        2. Ajout et configuration de la section "Achievements" --------------------- => Fait
+        3. Ajout et configuration de la section "Preferred technologies" ----------- => Fait
+        4. Ajout et configuration de la section "Hobbie" --------------------------- => Fait
+        5. Ajout et configuration de la section "Contact Me" ----------------------- => Fait
+    
+    3. Création et configuration "Contact Me":
+        1. Création du formulaire -------------------------------------------------- => Fait
+        2. Template du formulaire -------------------------------------------------- => Fait
+        3. Template email ---------------------------------------------------------- => Fait
+        4. Traitement du formulaire dans le controler ------------------------------ => Fait

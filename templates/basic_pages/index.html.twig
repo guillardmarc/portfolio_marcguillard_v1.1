@@ -1,20 +1,409 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BasicPagesController!{% endblock %}
+{% block title %}Portfolio de Marc GUILLARD{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {# Message flash section #}
+    {% for message in app.flashes('success') %}
+        <p class="alert alert-warning alert-dismissible text-center w-25 alert-position-fixe" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ message }}
+        </p>
+    {% endfor %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {# Presentation section #}
+    <section id="Presentations">
+        <div class="container-fluid m-0">
+            <div class="row align-items-center">
+                <div class="col-lg-7 order-lg-2 form-01">
+                    <img class="img-93" src="{{ presentation.getPresentation.pictureLink }}" alt="">
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <h3 class="display-3 text-white">
+                        {{ presentation.getPresentation.firstName }}
+                        {{ presentation.getPresentation.lastName }}
+                    </h3>
+                    <h1 class="title-job">
+                        {{ presentation.getPresentation.job }}
+                    </h1>
+                    <hr class="my-3 bg-white">
+                    <p class="leak text-white">
+                        {{ presentation.getPresentation.content }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/GUILLARD Marc/Desktop/projet Web/portfolio_marcguillard_v1.1/src/Controller/BasicPagesController.php'|file_link(0) }}">src/Controller/BasicPagesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/GUILLARD Marc/Desktop/projet Web/portfolio_marcguillard_v1.1/templates/basic_pages/index.html.twig'|file_link(0) }}">templates/basic_pages/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {# Achievements section #}
+    <section class="bg-glass py-5" id="Achievements">
+        <div class="container">
+            <h3 class="display-3 blend-mode-multiple mb-3">
+                Mes réalisations
+            </h3>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-lg-6 form-02">
+                                <img class="img-50" src="https://loremflickr.com/320/240?lock=10" alt="">
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="display-5">
+                                    Titre réalisation
+                                </h5>
+                                <hr class="my-2">
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga asperiores similique aspernatur ipsam tenetur numquam nesciunt quas sed! Rerum, unde! Veritatis magni sunt, consequatur voluptatum et maxime iste excepturi maiores.
+                                    Aliquam ipsa reiciendis et iusto cumque asperiores sapiente voluptate eum minima ab at officiis nobis dolorum obcaecati beatae eligendi magni quisquam autem, rem laborum, nemo modi deleniti magnam quasi? Amet!
+                                    Cupiditate, sequi! Consequuntur ducimus eveniet sequi odit voluptates unde alias incidunt quis necessitatibus nesciunt, quasi velit. Quas, corrupti quibusdam. Voluptatem quos nulla ut dignissimos dolores quasi rem hic eos odit?
+                                </p>
+                                <div class="d-grid gap-2 col-6 mx-auto my-3">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-outline-secondary-custom">Lien GIT</a>
+                                        <a href="#" class="btn btn-outline-secondary-custom">Lien HTML</a>
+                                        <a href="#" class="btn btn-outline-secondary-custom">Plus d'info</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-evenly small">
+                                    <span>
+                                        Date de création: 11/01/1983
+                                    </span>
+                                    <span>
+                                        Date de mise à jour: 11/02/1983
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-lg-6 form-02">
+                                <img class="img-50" src="https://loremflickr.com/320/240?lock=11" alt="">
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="display-5">
+                                    Titre réalisation
+                                </h5>
+                                <hr class="my-2">
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga asperiores similique aspernatur ipsam tenetur numquam nesciunt quas sed! Rerum, unde! Veritatis magni sunt, consequatur voluptatum et maxime iste excepturi maiores.
+                                    Aliquam ipsa reiciendis et iusto cumque asperiores sapiente voluptate eum minima ab at officiis nobis dolorum obcaecati beatae eligendi magni quisquam autem, rem laborum, nemo modi deleniti magnam quasi? Amet!
+                                    Cupiditate, sequi! Consequuntur ducimus eveniet sequi odit voluptates unde alias incidunt quis necessitatibus nesciunt, quasi velit. Quas, corrupti quibusdam. Voluptatem quos nulla ut dignissimos dolores quasi rem hic eos odit?
+                                </p>
+                                <div class="d-grid gap-2 col-6 mx-auto my-3">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-outline-secondary-custom">Lien GIT</a>
+                                        <a href="#" class="btn btn-outline-secondary-custom">Lien HTML</a>
+                                        <a href="#" class="btn btn-outline-secondary-custom">Plus d'info</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-evenly small">
+                                    <span>
+                                        Date de création: 11/01/1983
+                                    </span>
+                                    <span>
+                                        Date de mise à jour: 11/02/1983
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-lg-6 form-02">
+                                <img class="img-50" src="https://loremflickr.com/320/240?lock=12" alt="">
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="display-5">
+                                    Titre réalisation
+                                </h5>
+                                <hr class="my-2">
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga asperiores similique aspernatur ipsam tenetur numquam nesciunt quas sed! Rerum, unde! Veritatis magni sunt, consequatur voluptatum et maxime iste excepturi maiores.
+                                    Aliquam ipsa reiciendis et iusto cumque asperiores sapiente voluptate eum minima ab at officiis nobis dolorum obcaecati beatae eligendi magni quisquam autem, rem laborum, nemo modi deleniti magnam quasi? Amet!
+                                    Cupiditate, sequi! Consequuntur ducimus eveniet sequi odit voluptates unde alias incidunt quis necessitatibus nesciunt, quasi velit. Quas, corrupti quibusdam. Voluptatem quos nulla ut dignissimos dolores quasi rem hic eos odit?
+                                </p>
+                                <div class="d-grid gap-2 col-6 mx-auto my-3">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-outline-secondary-custom">Lien GIT</a>
+                                        <a href="#" class="btn btn-outline-secondary-custom">Lien HTML</a>
+                                        <a href="#" class="btn btn-outline-secondary-custom">Plus d'info</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-evenly small">
+                                    <span>
+                                        Date de création: 11/01/1983
+                                    </span>
+                                    <span>
+                                        Date de mise à jour: 11/02/1983
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    {# Preferred technologies section #}
+    <section class="py-5" id="WebTechnologies">
+        <div class="container-fluid">
+            <h3 class="display-3 blend-mode-multiple mb-3">
+                Mes technologies préférées
+            </h3>
+            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-evenly">
+                <div class="card mb-5 mb-lg-0 text-center card-hover">
+                    <img src="https://loremflickr.com/320/240?random=20" class="img-100" alt="...">
+                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+                <div class="card mb-5 mb-lg-0 text-center card-hover">
+                    <img src="https://loremflickr.com/320/240?random=21" class="img-100" alt="...">
+                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+                <div class="card mb-5 mb-lg-0 text-center card-hover">
+                    <img src="https://loremflickr.com/320/240?random=22" class="img-100" alt="...">
+                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+                <div class="card mb-5 mb-lg-0 text-center card-hover">
+                    <img src="https://loremflickr.com/320/240?random=23" class="img-100" alt="...">
+                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Professionnal career section #}
+    <section id="ProfessionnalCareers" class="py-5 bg-glass">
+        <h3 class="display-3 blend-mode-multiple mb-3">
+            Mon Parcours
+        </h3>
+        <div class="container">
+            {# Timeline 1 #}
+            <div class="row">
+                <div class="col d-none d-lg-block"></div>
+                <div class="col-auto text-center flex-column d-none d-sm-flex">
+                    <div class="row h-50">
+                        <div class="col">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                    <h5 class="m-2">
+                        <span class="badge rounded-circle bg-light border">&nbsp;</span>
+                    </h5>
+                    <div class="row h-50">
+                        <div class="col border-end">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="col py-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="float-end">11/01/1983</div>
+                            <h4 class="card-title text-muted">Jour 1</h4>
+                            <p class="card-text text-muted">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# Timeline 2 #}
+            <div class="row">
+                <div class="col py-2">
+                    <div class="card border">
+                        <div class="card-body">
+                            <div class="float-end">11/01/1983</div>
+                            <h4 class="card-title text-muted">Diplome</h4>
+                            <p class="card-text text-muted">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto text-center flex-column d-none d-sm-flex">
+                    <div class="row h-50">
+                        <div class="col border-end">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                    <h5 class="m-2">
+                        <span class="badge form-03 bg-success border">&nbsp;</span>
+                    </h5>
+                    <div class="row h-50">
+                        <div class="col border-end">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="col d-none d-lg-block"></div>
+            </div>
+            {# Timeline 3 #}
+            <div class="row">
+                <div class="col d-none d-lg-block"></div>
+                <div class="col-auto text-center flex-column d-none d-sm-flex">
+                    <div class="row h-50">
+                        <div class="col border-end">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                    <h5 class="m-2">
+                        <span class="badge rounded-circle bg-light border">&nbsp;</span>
+                    </h5>
+                    <div class="row h-50">
+                        <div class="col border-end">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="col py-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="float-end">11/01/1983</div>
+                            <h4 class="card-title text-muted">Jour 1</h4>
+                            <p class="card-text text-muted">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# Timeline 4 #}
+            <div class="row">
+                <div class="col d-none d-lg-block"></div>
+                <div class="col-auto text-center flex-column d-none d-sm-flex">
+                    <div class="row h-50">
+                        <div class="col border-end">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                    <h5 class="m-2">
+                        <span class="badge rounded-circle bg-light border">&nbsp;</span>
+                    </h5>
+                    <div class="row h-50">
+                        <div class="col border-end">&nbsp;</div>
+                        <div class="col">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="col py-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="float-end">11/01/1983</div>
+                            <h4 class="card-title text-muted">Jour 1</h4>
+                            <p class="card-text text-muted">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Hobbies section #}
+    <section class="py-5" id="Hobbies">
+        <h3 class="display-3 blend-mode-multiple">
+            Mes centres d'intérêt
+        </h3>
+        <div class="container-fluid">
+            <ul class="list-group-col-03">
+                <li>
+                    <img src="https://loremflickr.com/320/240?random=30" class="square-img-10 me-2 rounded-circle circle" alt="...">
+                    <h5 class="display-5">
+                        Lecture
+                    </h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque provident placeat similique, mollitia optio repellendus beatae esse sapiente amet in aspernatur, cumque iste distinctio, aperiam nam odit atque reiciendis perferendis.
+                        Repellendus, neque sed delectus maiores velit repellat ad quidem accusantium quis veniam a provident, soluta inventore, voluptatem consectetur amet debitis dolor! Cumque optio aperiam quas earum eveniet minus dolore fugit!
+                        Eum tenetur nobis fugit voluptatem officiis praesentium dolorem laborum dicta placeat sed corrupti incidunt numquam quaerat totam nam omnis, sit explicabo qui blanditiis, aliquid itaque, mollitia quae illo magnam! Magni!
+                    </p>
+                </li>
+                <li>
+                    <img src="https://loremflickr.com/320/240?random=31" class="square-img-10 me-2 rounded-circle circle" alt="...">
+                    <h5 class="display-5">
+                        Lecture
+                    </h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque provident placeat similique, mollitia optio repellendus beatae esse sapiente amet in aspernatur, cumque iste distinctio, aperiam nam odit atque reiciendis perferendis.
+                        Repellendus, neque sed delectus maiores velit repellat ad quidem accusantium quis veniam a provident, soluta inventore, voluptatem consectetur amet debitis dolor! Cumque optio aperiam quas earum eveniet minus dolore fugit!
+                        Eum tenetur nobis fugit voluptatem officiis praesentium dolorem laborum dicta placeat sed corrupti incidunt numquam quaerat totam nam omnis, sit explicabo qui blanditiis, aliquid itaque, mollitia quae illo magnam! Magni!
+                    </p>
+                </li>
+                <li>
+                    <img src="https://loremflickr.com/320/240?random=32" class="square-img-10 me-2 rounded-circle circle" alt="...">
+                    <h5 class="display-5">
+                        Lecture
+                    </h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque provident placeat similique, mollitia optio repellendus beatae esse sapiente amet in aspernatur, cumque iste distinctio, aperiam nam odit atque reiciendis perferendis.
+                        Repellendus, neque sed delectus maiores velit repellat ad quidem accusantium quis veniam a provident, soluta inventore, voluptatem consectetur amet debitis dolor! Cumque optio aperiam quas earum eveniet minus dolore fugit!
+                        Eum tenetur nobis fugit voluptatem officiis praesentium dolorem laborum dicta placeat sed corrupti incidunt numquam quaerat totam nam omnis, sit explicabo qui blanditiis, aliquid itaque, mollitia quae illo magnam! Magni!
+                    </p>
+                </li>
+                <li>
+                    <img src="https://loremflickr.com/320/240?random=33" class="square-img-10 me-2 rounded-circle circle" alt="...">
+                    <h5 class="display-5">
+                        Lecture
+                    </h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque provident placeat similique, mollitia optio repellendus beatae esse sapiente amet in aspernatur, cumque iste distinctio, aperiam nam odit atque reiciendis perferendis.
+                        Repellendus, neque sed delectus maiores velit repellat ad quidem accusantium quis veniam a provident, soluta inventore, voluptatem consectetur amet debitis dolor! Cumque optio aperiam quas earum eveniet minus dolore fugit!
+                        Eum tenetur nobis fugit voluptatem officiis praesentium dolorem laborum dicta placeat sed corrupti incidunt numquam quaerat totam nam omnis, sit explicabo qui blanditiis, aliquid itaque, mollitia quae illo magnam! Magni!
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    {# Contact-me section #}
+    <div class="modal fade" id="contact-me" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-glass">
+                <div class="modal-header bg-glass">
+                    <h5 class="modal-title" id="exampleModalLabel">Me contacter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="display-6 blend-mode-multiple">
+                        Par téléphone :
+                    </h6>
+                    <a href="tel:{{ presentation.getPresentation.phone }}">
+                        {{ presentation.getPresentation.phone }}
+                    </a>
+                    <hr class="m-4">
+                    <h6 class="display-6 blend-mode-multiple">
+                        Via le fomulaire ci-dessous :
+                    </h6>
+                    <p class="leak">
+                        Les champs signaler par "*" sont obligatoire.
+                    </p>
+                    {{ include('basic_pages/_contact_me_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

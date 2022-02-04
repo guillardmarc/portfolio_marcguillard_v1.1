@@ -2,5 +2,49 @@
 
 // Nav setting:
 nav{
-    
+    div{
+        // Navbar-brand tag:
+        .navbar-brand {
+            @extend .bg-magic-01;
+            background-clip: text;
+            color: transparent !important;
+            font-size: 1.5rem !important;
+            font-weight: 900;
+            letter-spacing: 0.5rem !important;
+            -moz-background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        // navbar-toggler tag:
+        .navbar-toggler {
+            border: 1px #212529 solid !important;
+
+            .btn-closed {
+                color: #ff0000 !important;
+            }
+        }
+
+        div ul {
+            // Nav-item tag
+            .nav-item {
+                border-bottom: 2px transparent solid;
+                font-size: 1.2rem;
+
+                &:hover {
+                    border-bottom: 2px $secondary-custom solid;
+                    font-weight: 500;
+                }
+            }
+
+            // Buttom tag:
+            .btn-outline-secondary-custom{
+                font-size: 1.2rem;
+
+                &:hover {
+                    color: #fff !important;
+                    font-weight: 500 !important;
+                }
+            }
+        }
+    }
 }
