@@ -379,31 +379,97 @@
         </div>
     </section>
 
-    {# Contact-me section #}
-    <div class="modal fade" id="contact-me" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-glass">
-                <div class="modal-header bg-glass">
-                    <h5 class="modal-title" id="exampleModalLabel">Me contacter</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h6 class="display-6 blend-mode-multiple">
-                        Par téléphone :
-                    </h6>
-                    <a href="tel:{{ presentation.getPresentation.phone }}">
-                        {{ presentation.getPresentation.phone }}
-                    </a>
-                    <hr class="m-4">
-                    <h6 class="display-6 blend-mode-multiple">
-                        Via le fomulaire ci-dessous :
-                    </h6>
-                    <p class="leak">
-                        Les champs signaler par "*" sont obligatoire.
-                    </p>
-                    {{ include('basic_pages/_contact_me_form.html.twig') }}
+    {# MODALES #}
+        {# Contact-me section #}
+        <div class="modal fade" id="ContactMe" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-white">
+                    <div class="modal-header text-white bg-secondary-custom">
+                        <h5 class="modal-title" id="exampleModalLabel">Me contacter</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 class="display-6 blend-mode-multiple">
+                            Par téléphone :
+                        </h6>
+                        <a href="tel:{{ presentation.getPresentation.phone }}">
+                            {{ presentation.getPresentation.phone }}
+                        </a>
+                        <hr class="m-4">
+                        <h6 class="display-6 blend-mode-multiple">
+                            Via le fomulaire ci-dessous :
+                        </h6>
+                        <p class="leak">
+                            Les champs signaler par "*" sont obligatoire.
+                        </p>
+                        {{ include('basic_pages/_contact_me_form.html.twig') }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        {# Regulation section #}
+        <div class="modal fade" id="Regulation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content bg-white">
+                    <div class="modal-header text-white bg-secondary-custom">
+                        <h5 class="modal-title" id="exampleModalLabel">Règlement du site</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{ website.getWebsite.regulation }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Website section #}
+        <div class="modal fade" id="Website" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content bg-white">
+                    <div class="modal-header text-white bg-secondary-custom">
+                        <h5 class="modal-title" id="exampleModalLabel">Informations du site</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Version du site:
+                            {{ website.getWebsite.version }}
+                        </p>
+                        <hr class="m-4">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Date
+                                    </th>
+                                    <th scope="col">
+                                        titre
+                                    </th>
+                                    <th scope="col">
+                                        Description
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for update in website.getWebsite.upldate %}
+                                    <tr>
+                                        <td>
+                                            {{ update.modifiedAt ? update.modifiedAt|date('d-m-Y H:i:s') : '' }}
+                                        </td>
+                                        <td>
+                                            {{ update.name }}
+                                        </td>
+                                        <td>
+                                            {{ update.content }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 {% endblock %}

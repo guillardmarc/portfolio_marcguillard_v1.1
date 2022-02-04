@@ -119,3 +119,9 @@ GIT => Fait
         2. Template du formulaire -------------------------------------------------- => Fait
         3. Template email ---------------------------------------------------------- => Fait
         4. Traitement du formulaire dans le controler ------------------------------ => Fait
+    GIT: Fait
+
+    4. Fichier "index.html.twig" du dossier "basic_pages":
+        1. Ajout et configuration de la section "Website" -------------------------- => Fait
+        2. Ajout et configuration de la section "Regulation" ----------------------- => fait
+    GIT: Fait
