@@ -123,5 +123,11 @@ GIT => Fait
 
     4. Fichier "index.html.twig" du dossier "basic_pages":
         1. Ajout et configuration de la section "Website" -------------------------- => Fait
-        2. Ajout et configuration de la section "Regulation" ----------------------- => fait
+        2. Ajout et configuration de la section "Regulation" ----------------------- => Fait
     GIT: Fait
+
+    5. Création et configuration de la partie "Identification":
+        1. Création du service ----------------------------------------------------- => Fait
+        2. Configuration du service ------------------------------------------------ => Fait
+        3. Modification du ficher "base.html.twig" --------------------------------- => Fait
+        4. Template du fichier identification -------------------------------------- => Fait 

@@ -1,3 +1,4 @@
+// button navbar:
 let bugerBtn = document.querySelector(".navbar-toggler");
 bugerBtn.onclick = bugerImg;
 
@@ -17,6 +18,7 @@ function bugerImg()
   } 
 }
 
+// Button Back to top:
 window.addEventListener('scroll', () => { 
   const nav = document.querySelector(".back-to-top");
   if(window.scrollY > 600 ){
@@ -26,3 +28,4 @@ window.addEventListener('scroll', () => {
       nav.classList.add("d-none");
   }
 })
+

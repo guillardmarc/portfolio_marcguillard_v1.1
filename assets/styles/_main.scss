@@ -109,4 +109,18 @@ main {
             }
         } 
     }
+
+    // Link tag
+    a {
+        border-bottom: 2px transparent solid;
+        color: #0000008c;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+            border-bottom: 2px $secondary-custom solid;
+            color: #000000;
+            font-weight: 500;
+        }
+    }
 }
