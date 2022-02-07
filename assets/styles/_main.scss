@@ -6,7 +6,7 @@ main {
     .title-job {
         background: inherit;
         background-clip: text;
-        font-size: 3rem;
+        font-size: 3.8rem;
         color: transparent;
         letter-spacing: 0.5;
         -moz-background-clip: text;
@@ -100,7 +100,7 @@ main {
 
         li {
             border-left: $dark-custom 2px solid;
-            color: #fff;
+            // color: #fff;
             padding-left: 0.5rem;
 
             .circle {

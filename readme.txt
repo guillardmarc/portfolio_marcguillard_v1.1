@@ -138,3 +138,8 @@ GIT => Fait
         2. Ajout et configuration de la section "nav" ------------------------------ => Fait
         3. Ajout de la section "main" ---------------------------------------------- => Fait
         4. Ajout d'un bouton de revoie vers le haut de la page --------------------- => Fait
+    GIT:Fait
+
+16. Ajout et configuration de Ckeditor
+    1. Installation de Ckeditor --------------------------------------------------- => Fait
+    2. Configuration de Ckeditor -------------------------------------------------- => Fait
