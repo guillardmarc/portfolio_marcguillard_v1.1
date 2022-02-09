@@ -21,8 +21,8 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        <header class="navbar navbar-dark sticky-top bg-magic-01">
+    <body class="bg-magic-01">
+        <header class="navbar navbar-dark sticky-top bg-glass">
             <div class="container d-flex flex-column flex-lg-row justify-content-between">
                 <a class="navbar-brand" href="#">
                     {{ presentation.getPresentation.firstName }}
@@ -42,8 +42,8 @@
         <div class="container-fluid">
             <div class="row">
                 {# Nav section #}
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                    <div class="position-sticky pt-3">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky bg-glass pt-3">
                         <ul class="nav flex-column">
                             <li class="btn btn-outline-secondary-custom mt-5 mx-2">
                                 <a class="nav-link" href="#">
@@ -121,7 +121,7 @@
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ path('hobbies_index')}}">
                                     <i class="bi bi-list-ul"></i>
                                     Liste
                                 </a>

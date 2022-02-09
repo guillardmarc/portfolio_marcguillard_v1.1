@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactMeType;
+use App\Repository\HobbiesRepository;
 use App\Repository\PresentationsRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,8 +19,9 @@ class BasicPagesController extends AbstractController
      * @Route("/", name="app_home")
      */
     public function home(
-        Request $request,
+        HobbiesRepository $hobbiesRepository,
         PresentationsRepository $presentationsRepository,
+        Request $request,
         MailerInterface $mailer
     ): Response
     {
@@ -31,7 +33,7 @@ class BasicPagesController extends AbstractController
             $emailTo = $rep->getEmail();
             
             $email = (new TemplatedEmail())
-                ->from($form->get('email')->getData())
+                ->from('no-reply@marcguillard.fr')
                 ->to($emailTo)
                 ->priority(Email::PRIORITY_HIGH)
                 ->subject($form->get('objet')->getData())
@@ -54,6 +56,7 @@ class BasicPagesController extends AbstractController
         }
 
         return $this->render('basic_pages/index.html.twig', [
+            'hobbies' => $hobbiesRepository->findAll(),
             'form'=>$form->createView()
         ]);
     }

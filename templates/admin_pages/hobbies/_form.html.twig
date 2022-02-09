@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+    <section class="bg-glass py-5 px-2">
+        <div class="container-fluid p-0">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Titre</span>
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Description</span>
+                {{ form_widget(form.content) }}
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Image</span>
+                {{ form_widget(form.pictureLink) }}
+            </div>
+            {% if app.request.attributes.get('_route') == 'hobbies_edit' %}
+                <h5 class="display-5">
+                    Image actuel
+                </h5>
+                <img class="img-fluid mb-3" src="{{ asset(hobby.pictureLink) }}" alt="">
+            {% endif %}
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-secondary-custom">{{ button_label|default('Créer') }}</button>
+        </div>
+    </section>
+{{ form_end(form) }}

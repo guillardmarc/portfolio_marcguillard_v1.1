@@ -138,8 +138,24 @@ GIT => Fait
         2. Ajout et configuration de la section "nav" ------------------------------ => Fait
         3. Ajout de la section "main" ---------------------------------------------- => Fait
         4. Ajout d'un bouton de revoie vers le haut de la page --------------------- => Fait
-    GIT:Fait
+    GIT: Fait
 
-16. Ajout et configuration de Ckeditor
+16. Ajout et configuration de Ckeditor:
     1. Installation de Ckeditor --------------------------------------------------- => Fait
     2. Configuration de Ckeditor -------------------------------------------------- => Fait
+GIT: Fait
+
+17. Création et configuration CRUD:
+    1. Crud "Hobbies":
+        1. Création du crud ------------------------------------------------------- => Fait
+        2. Configuration twig ----------------------------------------------------- => Fait
+        3. Configuration du formulaire -------------------------------------------- => Fait
+        4. Configuration du controler --------------------------------------------- => Fait
+        5. Configuration des template --------------------------------------------- => Fait
+    GIT:
+
+    2. Crud "Presentations":
+        1. Création du crud ------------------------------------------------------- =>
+        2. Configuration twig ----------------------------------------------------- =>
+        3. Configuration du controler --------------------------------------------- =>
+        4. Configuration du formulaire -------------------------------------------- =>

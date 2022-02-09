@@ -29,7 +29,7 @@
         {% endblock %}
     </head>
     <body class="bg-magic-01">
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-glass">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-glass">
             <div class="container">
                 <a class="navbar-brand" title="Retour vers l'accueil" href="{{ path('app_home') }}">
                     {{ presentation.getPresentation.firstName }}
@@ -114,7 +114,7 @@
                         </a>
                     {% else %}
                         <a href="{{ path('app_login') }}">
-                            Connection
+                            Connexion
                         </a>
                     {% endif %}
                 </div>

@@ -89,25 +89,9 @@ main {
     }
 
     // List groupe column tags:
-    @media (min-width: 1199.98px) { 
-        .list-group-col-03 {
-            column-count: 3;}
-    }
-    .list-group-col-03 {
-        column-count: none;
-        list-style: none;
-        padding: 0 !important;
-
-        li {
-            border-left: $dark-custom 2px solid;
-            // color: #fff;
-            padding-left: 0.5rem;
-
-            .circle {
-                float: left;
-                shape-outside: circle();
-            }
-        } 
+    .circle {
+        float: left;
+        shape-outside: circle();
     }
 
     // Link tag
