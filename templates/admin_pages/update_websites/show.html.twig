@@ -29,12 +29,26 @@
     {# Détail section #}
     <section class="card pt-5 bg-glass">
         <div class="card-body">
-            <h5 class="card-title">
-                {{ update_website.name }}
-            </h5>
-            <p class="card-text">
-                {{ update_website.content|raw }}
-            </p>
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            Titre
+                        </th>
+                        <td>
+                            {{ update_website.name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Description
+                        </th>
+                        <td>
+                            {{ update_website.content|raw }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm">
                 <thead>
                     <tr>

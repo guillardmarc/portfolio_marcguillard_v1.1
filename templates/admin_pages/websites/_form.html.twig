@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+    <section class="bg-glass py-5 px-2">
+        <div class="container-fluid p-0">
+            <div class="mb-3">
+                {{ form_widget(form.copyright) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.regulation) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.version) }}
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-secondary-custom">{{ button_label|default('Créer') }}</button>
+        </div>
+    </section>
+{{ form_end(form) }}

@@ -160,11 +160,20 @@ GIT: Fait
         3. Configuration du controler --------------------------------------------- => Fait
         4. Configuration du formulaire -------------------------------------------- => Fait
         5. Configuration des template --------------------------------------------- => Fait
-        GIT:Fait
+    GIT:Fait
 
-     3. Crud "UpdateWebsite":
-        1. Création du crud ------------------------------------------------------- =>
-        2. Configuration twig ----------------------------------------------------- =>
-        3. Configuration du controler --------------------------------------------- =>
-        4. Configuration du formulaire -------------------------------------------- =>
-        5. Configuration des template --------------------------------------------- =>
+    3. Crud "UpdateWebsites":
+        1. Création du crud ------------------------------------------------------- => Fait
+        2. Configuration twig ----------------------------------------------------- => Pas à faire
+        3. Configuration du controler --------------------------------------------- => Fait
+        4. Configuration du formulaire -------------------------------------------- => Fait
+        5. Configuration des template --------------------------------------------- => Fait
+    GIT:Fait
+
+    4. Crud "Websites":
+        1. Création du crud ------------------------------------------------------- => Fait
+        2. Configuration twig ----------------------------------------------------- => Pas à faire
+        3. Configuration du controler --------------------------------------------- => Fait
+        4. Configuration du formulaire -------------------------------------------- => 
+        5. Configuration des template --------------------------------------------- => 
+    GIT:

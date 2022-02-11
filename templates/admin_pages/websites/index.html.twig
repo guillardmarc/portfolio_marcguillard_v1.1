@@ -1,6 +1,6 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Liste des mises à jour{% endblock %}
+{% block title %}Liste des information du site web{% endblock %}
 
 {% block body %}
     <section class="py-5">
@@ -8,12 +8,12 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-10">
                     <h1 class="display-1">
-                        Liste des mises à jour
+                        Liste des information du site web
                     </h1>
                 </div>
                 <div class="col-lg-2">
                     <div class="d-grid gap-2">
-                        <a class="btn btn-secondary-custom" title="Ajouter une mise à jour" href="{{ path('update_websites_new') }}">
+                        <a class="btn btn-secondary-custom" title="Ajouter un info du site web" href="{{ path('websites_new') }}">
                             <i class="bi bi-file-earmark-plus"></i>
                         </a>
                     </div>
@@ -38,53 +38,53 @@
                             Date de modification
                         </th>
                         <th>
-                            Titre
+                            Copyright
                         </th>
                         <th>
-                            Description
+                            Règlement
                         </th>
                         <th>
-                            Version du site
+                            Version
                         </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for update_website in update_websites %}
+                {% for website in websites %}
                     <tr>
                         <td>
-                            {{ update_website.id }}
+                            {{ website.id }}
                         </td>
                         <td>
-                            {{ update_website.createdAt ? update_website.createdAt|date('Y-m-d H:i:s') : '' }}
+                            {{ website.createdAt ? website.createdAt|date('Y-m-d H:i:s') : '' }}
                         </td>
                         <td>
-                            {{ update_website.modifiedAt ? update_website.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                            {{ website.modifiedAt ? website.modifiedAt|date('Y-m-d H:i:s') : '' }}
                         </td>
                         <td>
-                            {{ update_website.name }}
+                            {{ website.copyright }}
                         </td>
                         <td>
-                            {{ update_website.content|raw }}
+                            {{ website.regulation|raw }}
                         </td>
                         <td>
-                            {{ update_website.websites.version }}
+                            {{ website.version }}
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a class="btn btn-outline-secondary-custom" title="Détail" href="{{ path('update_websites_show', {'id': update_website.id}) }}">
+                                <a class="btn btn-outline-secondary-custom" title="Détail" href="{{ path('websites_show', {'id': website.id}) }}">
                                     <i class="bi bi-eye"></i>
                                 </a>
-                                <a class="btn btn-outline-warning" title="Modifier" href="{{ path('update_websites_edit', {'id': update_website.id}) }}">
+                                <a class="btn btn-outline-warning" title="Modifier" href="{{ path('websites_edit', {'id': website.id}) }}">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                {{ include('admin_pages/update_websites/_delete_form.html.twig') }}
+                                {{ include('admin_pages/websites/_delete_form.html.twig') }}
                             </div>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="7">
+                        <td colspan="6">
                             Pas d'enregistrement
                         </td>
                     </tr>
@@ -93,5 +93,5 @@
             </table>
         </div>
     </section>
-
+    
 {% endblock %}

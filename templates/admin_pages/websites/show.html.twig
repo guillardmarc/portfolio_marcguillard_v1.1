@@ -1,0 +1,129 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Info site web "{{ website.id }}"{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Info site web "{{ website.id }}
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-secondary-custom"  title="Retour vers la liste" href="{{ path('websites_index') }}">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                        <a class="btn btn-outline-warning" title="Modifier" href="{{ path('websites_edit', {'id': website.id}) }}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        {{ include('admin_pages/websites/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Détail section #}
+    <section class="card pt-5 bg-glass">
+        <div class="card-body">
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            Copyright
+                        </th>
+                        <td>
+                            {{ website.copyright }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Règlement
+                        </th>
+                        <td>
+                            {{ website.regulation }}
+                        </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">
+                        Version
+                    </th>
+                    <td>
+                        {{ website.version }}
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Date de création
+                        </th>
+                        <th scope="col">
+                            Date de modification
+                        </th>
+                        <th scope="col">
+                            Titre
+                        </th>
+                        <th scope="col">
+                            Description
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for update in website.upldate %}
+                        <tr>
+                            <td>
+                                {{ update.createdAt ? update.createdAt|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td>
+                                {{ update.modifiedAt ? update.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td>
+                                {{ update.name}}
+                            </td>
+                            <td>
+                                {{ update.content|raw}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th class="text-muted small" scope="col">
+                            Id
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de création
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de modification
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-muted small">
+                            {{ website.id }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ website.createdAt ? website.createdAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ website.modifiedAt ? website.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+{% endblock %}
