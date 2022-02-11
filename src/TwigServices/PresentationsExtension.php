@@ -25,6 +25,6 @@ class PresentationsExtension extends AbstractExtension
 
     public function getPresentation()
     {
-        return $this->em->getRepository(Presentations::class)->findOneBy([], ['id'=>'ASC'], [1]);
+        return $this->em->getRepository(Presentations::class)->findOneBy(['isPublished'=>'true'], ['id'=>'ASC'], 1);
     }
 }

@@ -152,10 +152,19 @@ GIT: Fait
         3. Configuration du formulaire -------------------------------------------- => Fait
         4. Configuration du controler --------------------------------------------- => Fait
         5. Configuration des template --------------------------------------------- => Fait
-    GIT:
+    GIT: Fait
 
     2. Crud "Presentations":
+        1. Création du crud ------------------------------------------------------- => Fait
+        2. Configuration twig ----------------------------------------------------- => Fait
+        3. Configuration du controler --------------------------------------------- =>
+        4. Configuration du formulaire -------------------------------------------- =>
+        5. Configuration des template --------------------------------------------- =>
+
+    
+     3. Crud "###":
         1. Création du crud ------------------------------------------------------- =>
         2. Configuration twig ----------------------------------------------------- =>
         3. Configuration du controler --------------------------------------------- =>
         4. Configuration du formulaire -------------------------------------------- =>
+        5. Configuration des template --------------------------------------------- =>

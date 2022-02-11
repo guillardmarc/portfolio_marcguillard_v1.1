@@ -47,4 +47,16 @@ class PresentationsRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function presentation_show ()
+    {
+        $today = date('Y/m/d');
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isPubished = true' and 'p.publicationDate<$today')
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }

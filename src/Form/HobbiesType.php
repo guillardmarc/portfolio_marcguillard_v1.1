@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class HobbiesType extends AbstractType
 {
@@ -25,14 +26,14 @@ class HobbiesType extends AbstractType
                 ],
                 'required'=>true,
             ])
-            ->add('content', CKEditorType::class, [
-                'attr'=>[
-                    'placeholder'=>'Description du hobbie',
-                ],
+            ->add('content', CKEditorType::class, array(
+                'config' => array(
+                    'editorplaceholder' => 'Description du hobbie',
+                ),
                 'required'=>true,
-            ])
-            ->add('pictureLink', FileType::class, [
-                'attr' => [
+            ))
+            ->add('pictureLink', DropzoneType::class, [
+                'attr'=>[
                     'placeholder' => 'Sélectionner une image',
                 ],
                 'constraints' => [

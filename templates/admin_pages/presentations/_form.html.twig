@@ -1,0 +1,59 @@
+{{ form_start(form) }}
+    <section class="bg-glass py-5 px-2">
+        <div class="container-fluid p-0">
+            <fieldset class="border border-top-0 mb-3 px-2">
+                <legend>Présentation</legend>
+                <div class="mb-3">
+                    {{ form_widget(form.lastName) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.firstName) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.birthDate) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.job) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.content) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.pictureLink) }}
+                </div>
+                {% if app.request.attributes.get('_route') == 'presentations_edit' %}
+                    <h5 class="display-5">
+                        Image actuel
+                    </h5>
+                    <img class="img-fluid mb-3" src="{{ asset(presentation.pictureLink) }}" alt="">
+                {% endif %}
+            </fieldset>
+            <fieldset class="border border-top-0 mb-3 px-2">
+                <legend>Moyens de contact</legend>
+                <div class="mb-3">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.phone) }}
+                </div>
+            </fieldset>
+            <fieldset class="border border-top-0 mb-3 px-2">
+                <legend>Etat</legend>
+                <div class="row align-items-center mb-3">
+                    <div class="col-4">
+                        <div class="form-check form-switch">
+                            {{ form_widget(form.isPublished) }}
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        {{ form_widget(form.publicationDate) }}
+                    </div>
+                </div>
+            </fieldset>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-secondary-custom">{{ button_label|default('Créer') }}</button>
+            </div>
+        </div>
+    </section>
+    
+{{ form_end(form) }}

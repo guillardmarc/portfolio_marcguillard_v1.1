@@ -326,14 +326,14 @@
 
     {# Hobbies section #}
     <section class="py-5" id="Hobbies">
-        <h3 class="display-3 blend-mode-multiple">
+        <h3 class="display-3 blend-mode-multiple mb-3">
             Mes centres d'intérêt
         </h3>
         <div class="container-fluid">
             <div class="row align-items-center justify-content-evenly">
                 {% for hobby in hobbies %}
                     <div class="col-lg-3">
-                        <div class="mx-2 mb-3 mb-lg-0 border-top">
+                        <div class="mx-2 mb-3 mb-lg-0 border rounded-pill">
                             <img src="{{ asset(hobby.pictureLink) }}" class="square-img-10 rounded-circle m-3 circle" alt="...">
                             <h5 class="display-5 blend-mode-multiple">
                                 {{ hobby.name }}

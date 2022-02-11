@@ -1,16 +1,13 @@
 {{ form_start(form) }}
     <section class="bg-glass py-5 px-2">
         <div class="container-fluid p-0">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Titre</span>
+            <div class="mb-3">
                 {{ form_widget(form.name) }}
             </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Description</span>
+            <div class="mb-3">
                 {{ form_widget(form.content) }}
             </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Image</span>
+            <div class="mb-3">
                 {{ form_widget(form.pictureLink) }}
             </div>
             {% if app.request.attributes.get('_route') == 'hobbies_edit' %}

@@ -68,3 +68,11 @@ $i:0;
     }
     $i:$i+1;
 }
+
+// Dropzone tags:
+    // Dropzone container tag:
+    .dropzone-container {
+        background-color: white !important;
+        border: 1px solid #808080b4 !important;
+        border-radius: 5px !important;
+    }
