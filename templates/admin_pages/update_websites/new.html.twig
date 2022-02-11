@@ -1,6 +1,6 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Modification du hobbies "{{ hobby.name }}"{% endblock %}
+{% block title %}Créer une mise à jour{% endblock %}
 
 {% block body %}
     <section class="py-5">
@@ -8,20 +8,20 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-10">
                     <h1 class="display-1">
-                        Modification du hobby "{{ hobby.name }}"
+                        Créer une mise à jour
                     </h1>
                 </div>
                 <div class="col-lg-2">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a class="btn btn-outline-secondary-custom"  title="Retour vers la liste" href="{{ path('hobbies_index') }}">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-secondary-custom" title="Retour vers la liste" href="{{ path('update_websites_index') }}">
                             <i class="bi bi-list-ul"></i>
                         </a>
-                        {{ include('admin_pages/hobbies/_delete_form.html.twig') }}
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{ include('admin_pages/hobbies/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    {{ include('admin_pages/update_websites/_form.html.twig') }}
+
 {% endblock %}
