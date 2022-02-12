@@ -184,4 +184,4 @@ GIT: Fait
         3. Configuration du controler --------------------------------------------- => Fait
         4. Configuration du formulaire -------------------------------------------- => Fait
         5. Configuration des template --------------------------------------------- => Fait
-    GIT:
+    GIT:Fait

@@ -14,6 +14,15 @@
     <div class="mb-3">
         {{ form_widget(form.message) }}
     </div>
+    <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  required="required">
+        <label class="form-check-label" for="flexCheckDefault">
+            J'accepte de règlement du site.
+        </label>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#Regulation">
+            Consulter règlement
+        </a>
+    </div>
     <div class="mb-3">
         {{ form_widget(form.company) }}
     </div>
