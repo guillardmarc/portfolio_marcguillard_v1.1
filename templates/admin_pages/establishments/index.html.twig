@@ -1,0 +1,122 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Liste des entrepises{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Liste des entreprises
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-secondary-custom" title="Ajouter un nouveau hobbie" href="{{ path('establishments_new') }}">
+                            <i class="bi bi-file-earmark-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# List section #}
+    <section class="bg-glass py-5 px-2">
+        <div class="table-responsive">
+            <table class="table tables-sm">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Date de création
+                        </th>
+                        <th>
+                            Date de modification
+                        </th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Ville
+                        </th>
+                        <th>
+                            Site web
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Téléphone
+                        </th>
+                        <th>
+                            Visuel de l'image
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for establishment in establishments %}
+                    <tr>
+                        <td>
+                            {{ establishment.id }}
+                        </td>
+                        <td>
+                            {{ establishment.createdAt ? establishment.createdAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td>
+                            {{ establishment.modifiedAt ? establishment.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td>
+                            {{ establishment.name }}
+                        </td>
+                        <td>
+                            {{ establishment.content|raw }}
+                        </td>
+                        <td>
+                            {{ establishment.city }}
+                        </td>
+                        <td>
+                            {{ establishment.httpLink }}
+                        </td>
+                        <td>
+                            {{ establishment.email }}
+                        </td>
+                        <td>
+                            {{ establishment.phone }}
+                        </td>
+                        <td>
+                            <img class="square-img-20" src="{{ asset(establishment.pictureLink) }}" alt="">
+                            <br>
+                            {{ establishment.pictureLink }}
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a class="btn btn-outline-secondary-custom" title="Détail" href="{{ path('establishments_show', {'id': establishment.id}) }}">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a class="btn btn-outline-warning" title="Modifier" href="{{ path('establishments_edit', {'id': establishment.id}) }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                {{ include('admin_pages/establishments/_delete_form.html.twig') }}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">Pas d'enregistrement</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+{% endblock %}

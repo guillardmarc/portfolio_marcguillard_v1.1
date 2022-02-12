@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+    <section class="bg-glass py-5 px-2">
+        <div class="container-fluid p-0">
+            <div class="mb-3">
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.content) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.city) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.httpLink) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.email) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.phone) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.pictureLink) }}
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-secondary-custom">{{ button_label|default('Créer') }}</button>
+        </div>
+    </section>
+{{ form_end(form) }}
