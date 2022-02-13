@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\WebTechnologies;
 use App\Form\ContactMeType;
 use App\Repository\HobbiesRepository;
 use App\Repository\PresentationsRepository;
+use App\Repository\WebTechnologiesRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +23,7 @@ class BasicPagesController extends AbstractController
     public function home(
         HobbiesRepository $hobbiesRepository,
         PresentationsRepository $presentationsRepository,
+        WebTechnologiesRepository $webTechnologiesRepository,
         Request $request,
         MailerInterface $mailer
     ): Response
@@ -56,7 +59,8 @@ class BasicPagesController extends AbstractController
         }
 
         return $this->render('basic_pages/index.html.twig', [
-            'hobbies' => $hobbiesRepository->findAll(),
+            'hobbies'=>$hobbiesRepository->findAll(),
+            'webTechnologies'=>$webTechnologiesRepository->findBy(['isPrefered'=>True], ['id'=>'DESC']),
             'form'=>$form->createView()
         ]);
     }

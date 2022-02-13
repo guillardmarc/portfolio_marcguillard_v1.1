@@ -1,0 +1,106 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Liste des technologies web{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Liste des technologies web
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-secondary-custom" title="Ajouter un nouveau hobbie" href="{{ path('web_technologies_new') }}">
+                            <i class="bi bi-file-earmark-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# List section #}
+    <section class="bg-glass py-5 px-2">
+        <div class="table-responsive">
+            <table class="table tables-sm">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Date de création
+                        </th>
+                        <th>
+                            Date de modification
+                        </th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Visuel de l'image
+                        </th>
+                        <th>
+                            Technologie préféré
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for web_technology in web_technologies %}
+                    <tr>
+                        <td>
+                            {{ web_technology.id }}
+                        </td>
+                        <td>
+                            {{ web_technology.createdAt ? web_technology.createdAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td>
+                            {{ web_technology.modifiedAt ? web_technology.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td>
+                            {{ web_technology.name }}
+                        </td>
+                        <td>
+                            {{ web_technology.content|raw }}
+                        </td>
+                        <td>
+                            <img class="square-img-20" src="{{ asset(web_technology.pictureLink) }}" alt="">
+                            <br>
+                            {{ web_technology.pictureLink }}
+                        </td>
+                        <td>
+                            {{ web_technology.isPrefered ? 'Oui' : 'Nom' }}
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a class="btn btn-outline-secondary-custom" title="Détail" href="{{ path('web_technologies_show', {'id': web_technology.id}) }}">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a class="btn btn-outline-warning" title="Modifier" href="{{ path('web_technologies_edit', {'id': web_technology.id}) }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                {{ include('admin_pages/web_technologies/_delete_form.html.twig') }}
+                            </div>
+                            <a href="">show</a>
+                            <a href="">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">
+                            Pas d'enregistrement
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

@@ -62,7 +62,7 @@ $i:0;
     .square-img-#{$i} {
         border-radius: inherit;
         height: 1vh*$i;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
         width: 1vh*$i;
     }

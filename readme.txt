@@ -185,3 +185,11 @@ GIT: Fait
         4. Configuration du formulaire -------------------------------------------- => Fait
         5. Configuration des template --------------------------------------------- => Fait
     GIT:Fait
+
+    6. Crud "WebTechnologies":
+        1. Création du crud ------------------------------------------------------- => Fait
+        2. Configuration twig ----------------------------------------------------- => Fait
+        3. Configuration du controler --------------------------------------------- => Fait
+        4. Configuration du formulaire -------------------------------------------- => Fait
+        5. Configuration des template --------------------------------------------- => Fait
+    GIT:

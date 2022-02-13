@@ -7,6 +7,7 @@ parameters:
     picture_hobbies_directory: '%kernel.project_dir%/public/uploads/hobbies'
     picture_presentations_directory: '%kernel.project_dir%/public/uploads/presentations'
     picture_establishments_directory: '%kernel.project_dir%/public/uploads/establishments'
+    picture_webtechnologies_directory: '%kernel.project_dir%/public/uploads/webtechnologies'
 
 services:
     # default configuration for services in *this* file

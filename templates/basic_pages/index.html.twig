@@ -167,38 +167,20 @@
                 Mes technologies préférées
             </h3>
             <div class="d-flex flex-column flex-lg-row align-items-center justify-content-evenly">
-                <div class="card mb-5 mb-lg-0 text-center card-hover">
-                    <img src="https://loremflickr.com/320/240?random=20" class="img-100" alt="...">
-                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">Last updated 3 mins ago</p>
+                {% for webTechnology in webTechnologies %}
+                    <div class="card mb-5 mb-lg-0 text-center card-hover">
+                        <img src="{{ asset(webTechnology.pictureLink) }}" class="square-img-24" alt="...">
+                        <div class="card-img-overlay p-3 p-lg-5 bg-glass">
+                            <h5 class="card-title">
+                                {{ webTechnology.name }}
+                            </h5>
+                            <p class="card-text">
+                                {{ webTechnology.content|raw }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="card mb-5 mb-lg-0 text-center card-hover">
-                    <img src="https://loremflickr.com/320/240?random=21" class="img-100" alt="...">
-                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">Last updated 3 mins ago</p>
-                    </div>
-                </div>
-                <div class="card mb-5 mb-lg-0 text-center card-hover">
-                    <img src="https://loremflickr.com/320/240?random=22" class="img-100" alt="...">
-                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">Last updated 3 mins ago</p>
-                    </div>
-                </div>
-                <div class="card mb-5 mb-lg-0 text-center card-hover">
-                    <img src="https://loremflickr.com/320/240?random=23" class="img-100" alt="...">
-                    <div class="card-img-overlay p-3 p-lg-5 bg-glass">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">Last updated 3 mins ago</p>
-                    </div>
-                </div>
+                {% endfor %}
+                
             </div>
         </div>
     </section>

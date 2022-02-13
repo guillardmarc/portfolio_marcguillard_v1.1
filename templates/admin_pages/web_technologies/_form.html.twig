@@ -8,26 +8,17 @@
                 {{ form_widget(form.content) }}
             </div>
             <div class="mb-3">
-                {{ form_widget(form.city) }}
-            </div>
-            <div class="mb-3">
-                {{ form_widget(form.httpLink) }}
-            </div>
-            <div class="mb-3">
-                {{ form_widget(form.email) }}
-            </div>
-            <div class="mb-3">
-                {{ form_widget(form.phone) }}
-            </div>
-            <div class="mb-3">
                 {{ form_widget(form.pictureLink) }}
             </div>
-            {% if app.request.attributes.get('_route') == 'establishments_edit' %}
+            {% if app.request.attributes.get('_route') == 'web_technologies_edit' %}
                 <h5 class="display-5">
                     Image actuel
                 </h5>
-                <img class="img-fluid mb-3" src="{{ asset(establishment.pictureLink) }}" alt="">
+                <img class="img-fluid mb-3" src="{{ asset(web_technology.pictureLink) }}" alt="">
             {% endif %}
+            <div class="mb-3">
+                {{ form_widget(form.isPrefered) }}
+            </div>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-secondary-custom">{{ button_label|default('Créer') }}</button>
