@@ -1,0 +1,44 @@
+{{ form_start(form) }}
+    <section class="bg-glass py-5 px-2">
+        <div class="container-fluid p-0">
+            <div class="mb-3">
+                {{ form_widget(form.Type) }}
+            </div>
+            <fieldset class="border border-top-0 mb-3 px-2">
+                <legend>Etape</legend>
+                <div class="mb-3">
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.content) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.contract) }}
+                </div>
+            </fieldset>
+            <fieldset class="border border-top-0 mb-3 px-2">
+                <legend>Etape</legend>
+                <div class="mb-3">
+                    {{ form_widget(form.employer) }}
+                </div>
+                <div class="mb-3">
+                    <div>
+                        Lieu
+                    </div>
+                    {{ form_widget(form.workSite) }}
+                </div>
+                <div class="mb-3">
+                    <div>Date de début</div>
+                    {{ form_widget(form.startDate) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.duration) }}
+                </div>
+            </fieldset>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-secondary-custom">{{ button_label|default('Créer') }}</button>
+        </div>
+    </section>
+    {{ form_widget(form) }}
+{{ form_end(form) }}

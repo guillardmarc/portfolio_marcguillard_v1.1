@@ -1,0 +1,6 @@
+<form class="btn btn-outline-danger" method="post" action="{{ path('professionnal_careers_delete', {'id': professionnal_career.id}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ professionnal_career.id) }}">
+    <button class="btn m-0 p-0" title="Supprimer">
+        <i class="bi bi-trash"></i>
+    </button>
+</form>

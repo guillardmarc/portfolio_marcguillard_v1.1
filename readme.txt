@@ -192,4 +192,12 @@ GIT: Fait
         3. Configuration du controler --------------------------------------------- => Fait
         4. Configuration du formulaire -------------------------------------------- => Fait
         5. Configuration des template --------------------------------------------- => Fait
+    GIT:Fait
+
+    7. Crud "ProfessionnalCareers":
+        1. Création du crud ------------------------------------------------------- => Fait
+        2. Configuration twig ----------------------------------------------------- => Pas à faire
+        3. Configuration du controler --------------------------------------------- => Fait
+        4. Configuration du formulaire -------------------------------------------- => Fait
+        5. Configuration des template --------------------------------------------- => Fait
     GIT:
