@@ -28,7 +28,7 @@
                     </h1>
                     <hr class="my-3 bg-white">
                     <p class="leak text-white">
-                        {{ presentation.getPresentation.content }}
+                        {{ presentation.getPresentation.content|raw }}
                     </p>
                 </div>
             </div>
@@ -191,118 +191,158 @@
             Mon Parcours
         </h3>
         <div class="container">
-            {# Timeline 1 #}
-            <div class="row">
-                <div class="col d-none d-lg-block"></div>
-                <div class="col-auto text-center flex-column d-none d-sm-flex">
-                    <div class="row h-50">
-                        <div class="col">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                    <h5 class="m-2">
-                        <span class="badge rounded-circle bg-light border">&nbsp;</span>
-                    </h5>
-                    <div class="row h-50">
-                        <div class="col border-end">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="col py-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="float-end">11/01/1983</div>
-                            <h4 class="card-title text-muted">Jour 1</h4>
-                            <p class="card-text text-muted">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
-                            </p>
+           {% for professionnalcareer in professionnalcareers %}
+                {% if professionnalcareer.Type == 'Emploie' %}
+                    <div class="row">
+                        <div class="col d-none d-lg-block"></div>
+                        <div class="col-auto text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-circle bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col py-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="float-end">
+                                       {{ professionnalcareer.startDate ? professionnalcareer.startDate|date('M/Y') : '' }} 
+                                    </div>
+                                    <h4 class="card-title text-muted">
+                                        {{ professionnalcareer.name }}
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        {{ professionnalcareer.content|raw }}
+                                    </p>
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    Centre de formation
+                                                </th>
+                                                <td>
+                                                    {{ professionnalcareer.employer.name }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    Lieu de formation
+                                                </th>
+                                                <td>
+                                                    {% for workSite in professionnalcareer.workSite %}
+                                                        {{ workSite.name }}
+                                                    {% endfor %}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    Durée
+                                                </th>
+                                                <td>
+                                                    {{ professionnalcareer.duration }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            {# Timeline 2 #}
-            <div class="row">
-                <div class="col py-2">
-                    <div class="card border">
-                        <div class="card-body">
-                            <div class="float-end">11/01/1983</div>
-                            <h4 class="card-title text-muted">Diplome</h4>
-                            <p class="card-text text-muted">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
-                            </p>
+                {% else %}
+                    <div class="row">
+                        <div class="col py-2">
+                            <div class="card border">
+                                <div class="card-body">
+                                    <div class="float-end">
+                                       {{ professionnalcareer.startDate ? professionnalcareer.startDate|date('M/Y') : '' }} - {{ professionnalcareer.duration }}
+                                    </div>
+                                    <h4 class="card-title text-muted">
+                                        {{ professionnalcareer.name }}
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        {{ professionnalcareer.content|raw }}
+                                    </p>
+                                    <hr class="m-2">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    Centre de formation
+                                                </th>
+                                                <td>
+                                                    {% if professionnalcareer.employer.pictureLink %}
+                                                        <img class="square-img-10" src="{{ asset(professionnalcareer.employer.pictureLink)}}" alt="">
+                                                        <br>
+                                                    {% endif %}
+                                                    <h5>
+                                                        {{ professionnalcareer.employer.name }}
+                                                    </h5>
+                                                        {{ professionnalcareer.employer.content|raw }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    Lieu de formation
+                                                </th>
+                                                <td>
+                                                    {% for workSite in professionnalcareer.workSite %}
+                                                        {{ workSite.name }}
+                                                    {% endfor %}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    Contact
+                                                </th>
+                                                <td>
+                                                    {% if professionnalcareer.employer.httpLink %}
+                                                        <a href="{{ professionnalcareer.employer.httpLink }} ">
+                                                            <i class="bi bi-link"></i>
+                                                            Site web
+                                                        </a>
+                                                    {% endif %}
+                                                    {% if professionnalcareer.employer.email %}
+                                                        <a href="mailto:{{ professionnalcareer.employer.email }}">
+                                                            <i class="bi bi-at"></i>
+                                                            Email
+                                                        </a>
+                                                    {% endif %}
+                                                    {% if professionnalcareer.employer.phone %}
+                                                        <a href="tel:{{ professionnalcareer.employer.phone }}">
+                                                            <i class="bi bi-telephone-fill"></i>
+                                                            Téléphone
+                                                        </a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-auto text-center flex-column d-none d-sm-flex">
-                    <div class="row h-50">
-                        <div class="col border-end">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                    <h5 class="m-2">
-                        <span class="badge form-03 bg-success border">&nbsp;</span>
-                    </h5>
-                    <div class="row h-50">
-                        <div class="col border-end">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="col d-none d-lg-block"></div>
-            </div>
-            {# Timeline 3 #}
-            <div class="row">
-                <div class="col d-none d-lg-block"></div>
-                <div class="col-auto text-center flex-column d-none d-sm-flex">
-                    <div class="row h-50">
-                        <div class="col border-end">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                    <h5 class="m-2">
-                        <span class="badge rounded-circle bg-light border">&nbsp;</span>
-                    </h5>
-                    <div class="row h-50">
-                        <div class="col border-end">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="col py-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="float-end">11/01/1983</div>
-                            <h4 class="card-title text-muted">Jour 1</h4>
-                            <p class="card-text text-muted">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
-                            </p>
+                        <div class="col-auto text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge form-03 bg-success border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
                         </div>
+                        <div class="col d-none d-lg-block"></div>
                     </div>
-                </div>
-            </div>
-            {# Timeline 4 #}
-            <div class="row">
-                <div class="col d-none d-lg-block"></div>
-                <div class="col-auto text-center flex-column d-none d-sm-flex">
-                    <div class="row h-50">
-                        <div class="col border-end">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                    <h5 class="m-2">
-                        <span class="badge rounded-circle bg-light border">&nbsp;</span>
-                    </h5>
-                    <div class="row h-50">
-                        <div class="col border-end">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="col py-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="float-end">11/01/1983</div>
-                            <h4 class="card-title text-muted">Jour 1</h4>
-                            <p class="card-text text-muted">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga voluptatibus adipisci magni voluptatem nam nulla, dignissimos magnam assumenda eveniet blanditiis nisi perspiciatis ex voluptas suscipit rerum illo doloremque cum!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </section>
 
@@ -316,7 +356,7 @@
                 {% for hobby in hobbies %}
                     <div class="col-lg-3">
                         <div class="mx-2 mb-3 mb-lg-0 border rounded-pill">
-                            <img src="{{ asset(hobby.pictureLink) }}" class="square-img-10 rounded-circle m-3 circle" alt="...">
+                            <img src="{{ asset(hobby.pictureLink) }}" class="square-img-10 rounded-circle m-3 circle bg-white" alt="...">
                             <h5 class="display-5 blend-mode-multiple">
                                 {{ hobby.name }}
                             </h5>

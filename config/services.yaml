@@ -8,6 +8,7 @@ parameters:
     picture_presentations_directory: '%kernel.project_dir%/public/uploads/presentations'
     picture_establishments_directory: '%kernel.project_dir%/public/uploads/establishments'
     picture_webtechnologies_directory: '%kernel.project_dir%/public/uploads/webtechnologies'
+    picture_achievements_directory: '%kernel.project_dir%/public/uploads/achievements'
 
 services:
     # default configuration for services in *this* file

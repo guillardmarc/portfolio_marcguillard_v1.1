@@ -1,0 +1,70 @@
+{{ form_start(form) }}
+    <section class="bg-glass py-5 px-2">
+        <div class="container-fluid p-0">
+            <div class="mb-3">
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.content) }}
+            </div>
+            <div class="mb-3">
+                {{ form_widget(form.pictureLink) }}
+            </div>
+            {% if app.request.attributes.get('_route') == 'achievements_edit' %}
+                <div class="my-1 text-center bg-secondary">
+                    Image(s) actuel(s)
+                </div>
+                <div class="row align-items-center justify-content-evenly">
+                    {% for image in achievement.pictures %}
+                        <div class="col-lg-4 mb-3">
+                            <img src="{{ asset(image.link) }}" alt="" width="150">
+            
+                            {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+                            <a class="btn btn-outline-danger" href="{{ path('achievements_picture_delete', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row justify-content-between">
+                <div class="col-6 mb-3">
+                    {{ form_widget(form.applicant) }}
+                </div>
+                <div class="col-6 mb-3">
+                    <div>
+                        Technologies
+                    </div>
+                    {{ form_widget(form.technology) }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form_widget(form.startDate) }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form_widget(form.statut) }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form_widget(form.endDate) }}
+                </div>
+                <div class="col-6 mb-3">
+                    {{ form_widget(form.releaseDate) }}
+                </div>
+                <div class="col-6 mb-3">
+                    {{ form_widget(form.updateDate) }}
+                </div>
+                <div class="col-6 mb-3">
+                    {{ form_widget(form.gitLink) }}
+                </div>
+                <div class="col-6 mb-3">
+                    {{ form_widget(form.httpLink) }}
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ form_widget(form) }}
+    
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

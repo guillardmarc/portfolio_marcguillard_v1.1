@@ -75,7 +75,7 @@ class Achievements
     private $updateDate;
 
     /**
-     * @ORM\OneToMany(targetEntity=PictureAchievements::class, mappedBy="achievements", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=PictureAchievements::class, mappedBy="achievements", orphanRemoval=true, cascade={"persist"})
      */
     private $pictures;
 

@@ -1,0 +1,148 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Réalisation "{{ achievement.id }}"{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Réalisation "{{ achievement.id }}"
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-secondary-custom"  title="Retour vers la liste" href="{{ path('achievements_index') }}">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                        <a class="btn btn-outline-warning" title="Modifier" href="{{ path('achievements_edit', {'id': achievement.id}) }}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        {{ include('admin_pages/achievements/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Détail section #}
+    <section class="card p-5 bg-glass">
+        <div class="row g-0 align-items-top">
+            <div class="col-md-4">
+                {% for picture in achievement.pictures %}
+                    <img src="{{ asset(picture.link) }}" class="img-fluid rounded m-2" alt="...">
+                {% endfor %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    Nom
+                                </th>
+                                <td>
+                                    {{ achievement.name }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Description
+                                </th>
+                                <td>
+                                    {{ achievement.content|raw }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Date de lancement
+                                </th>
+                                <td>
+                                    {{ achievement.startDate ? achievement.startDate|date('Y-m-d') : '' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Date de fin
+                                </th>
+                                <td>
+                                    {{ achievement.endDate ? achievement.endDate|date('Y-m-d') : '' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Statut
+                                </th>
+                                <td>
+                                    {{ achievement.statut }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Lien vers le dépot GIT
+                                </th>
+                                <td>
+                                    {{ achievement.gitLink }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Lien http
+                                </th>
+                                <td>
+                                    {{ achievement.httpLink }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Date de mise en ligne
+                                </th>
+                                <td>
+                                    {{ achievement.releaseDate ? achievement.releaseDate|date('Y-m-d') : '' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Date de mise à jour
+                                </th>
+                                <td>
+                                    {{ achievement.updateDate ? achievement.updateDate|date('Y-m-d') : '' }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th class="text-muted small" scope="col">
+                            Id
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de création
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de modification
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-muted small">
+                            {{ achievement.id }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ achievement.createdAt ? achievement.createdAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ achievement.modifiedAt ? achievement.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

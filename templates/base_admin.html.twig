@@ -12,6 +12,7 @@
         {# Link tags#}
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         
+        
         {# Webpack Encors tags#}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -20,6 +21,7 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        <script src="{{ asset('delet_picture.js') }}"></script>
     </head>
     <body class="bg-magic-01">
         <header class="navbar navbar-dark sticky-top bg-glass">
@@ -69,13 +71,13 @@
 
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-secondary-custom">
                             <span>Réalisations</span>
-                            <a class="link-secondary" title="Ajouter une réalisation" href="#">
+                            <a class="link-secondary" title="Ajouter une réalisation" href="{{ path('achievements_new') }}">
                                 <i class="bi bi-plus-circle"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ path('achievements_index') }}">
                                     <i class="bi bi-list-ul"></i>
                                     Liste
                                 </a>

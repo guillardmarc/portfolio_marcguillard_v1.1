@@ -6,6 +6,7 @@ use App\Entity\WebTechnologies;
 use App\Form\ContactMeType;
 use App\Repository\HobbiesRepository;
 use App\Repository\PresentationsRepository;
+use App\Repository\ProfessionnalCareersRepository;
 use App\Repository\WebTechnologiesRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,6 +24,7 @@ class BasicPagesController extends AbstractController
     public function home(
         HobbiesRepository $hobbiesRepository,
         PresentationsRepository $presentationsRepository,
+        ProfessionnalCareersRepository $professionnalCareersRepository,
         WebTechnologiesRepository $webTechnologiesRepository,
         Request $request,
         MailerInterface $mailer
@@ -60,6 +62,7 @@ class BasicPagesController extends AbstractController
 
         return $this->render('basic_pages/index.html.twig', [
             'hobbies'=>$hobbiesRepository->findAll(),
+            'professionnalcareers'=>$professionnalCareersRepository->findBy([], ['startDate'=>'DESC']),
             'webTechnologies'=>$webTechnologiesRepository->findBy(['isPrefered'=>True], ['id'=>'DESC']),
             'form'=>$form->createView()
         ]);

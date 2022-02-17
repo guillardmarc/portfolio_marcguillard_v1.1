@@ -93,8 +93,10 @@
                             {{ establishment.phone }}
                         </td>
                         <td>
-                            <img class="square-img-20" src="{{ asset(establishment.pictureLink) }}" alt="">
-                            <br>
+                            {% if establishment.pictureLink %}
+                                <img class="square-img-20" src="{{ asset(establishment.pictureLink) }}" alt="">
+                                <br>
+                            {% endif %}
                             {{ establishment.pictureLink }}
                         </td>
                         <td>

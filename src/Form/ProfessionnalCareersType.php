@@ -30,18 +30,19 @@ class ProfessionnalCareersType extends AbstractType
                 'config' => array(
                     'editorplaceholder' => 'Description de l\'emploie',
                 ),
-                'required'=>true,
+                'required'=>false,
             ))
             ->add('Type', ChoiceType::class, [
                 'placeholder' => 'Type d\'étape',
                 'choices' => [
-                    'Diplome'=>'Diplome',
+                    'Formation'=>'Formation',
                     'Emploie'=>'Emploie',
                 ],
                 'required' => true,
             ])
             ->add('contract', ChoiceType::class, [
                 'choices' => [
+                    'Formation'=>'Formation',
                     'Stage'=>'Stage',
                     'Intérim'=>'Intérim',
                     'CDD'=>'CDD',
