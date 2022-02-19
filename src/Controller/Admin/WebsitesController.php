@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\Websites;
 use App\Form\WebsitesType;
@@ -11,9 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/websites")
+ * @Route("/admin/websites")
+ * @IsGranted("ROLE_ADMIN")
  */
 class WebsitesController extends AbstractController
 {
@@ -22,7 +24,7 @@ class WebsitesController extends AbstractController
      */
     public function index(WebsitesRepository $websitesRepository): Response
     {
-        return $this->render('admin_pages/websites/index.html.twig', [
+        return $this->render('admin/websites/index.html.twig', [
             'websites' => $websitesRepository->findAll(),
         ]);
     }
@@ -46,7 +48,7 @@ class WebsitesController extends AbstractController
             return $this->redirectToRoute('websites_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/websites/new.html.twig', [
+        return $this->renderForm('admin/websites/new.html.twig', [
             'website' => $website,
             'form' => $form,
         ]);
@@ -57,7 +59,7 @@ class WebsitesController extends AbstractController
      */
     public function show(Websites $website): Response
     {
-        return $this->render('admin_pages/websites/show.html.twig', [
+        return $this->render('admin/websites/show.html.twig', [
             'website' => $website,
         ]);
     }
@@ -77,7 +79,7 @@ class WebsitesController extends AbstractController
             return $this->redirectToRoute('websites_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/websites/edit.html.twig', [
+        return $this->renderForm('admin/websites/edit.html.twig', [
             'website' => $website,
             'form' => $form,
         ]);

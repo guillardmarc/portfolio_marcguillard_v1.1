@@ -1,0 +1,128 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Liste des étapes de la carrière professionnelle{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Liste des étapes de la carrière professionnelle
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-secondary-custom" title="Ajouter un nouveau hobbie" href="{{ path('professionnal_careers_new') }}">
+                            <i class="bi bi-file-earmark-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# List section #}
+    <section class="bg-glass py-5 px-2">
+        <div class="table-responsive">
+            <table class="table tables-sm">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Date de création
+                        </th>
+                        <th>
+                            Date de modification
+                        </th>
+                        <th>
+                            Nom de l'etape
+                        </th>
+                        <th>
+                            Description de l'étape
+                        </th>
+                        <th>
+                            Type de l'étape
+                        </th>
+                        <th>
+                            Contract de l'étape
+                        </th>
+                        <th>
+                            Entreprise
+                        </th>
+                        <th>
+                            Lieu de travail
+                        </th>
+                        <th>
+                            Date début
+                        </th>
+                        <th>
+                            Durée
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for professionnal_career in professionnal_careers %}
+                    <tr>
+                        <td>
+                            {{ professionnal_career.id }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.createdAt ? professionnal_career.createdAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.modifiedAt ? professionnal_career.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.name }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.content|raw }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.Type }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.contract }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.employer.name }}
+                        </td>
+                        <td>
+                            {% for workSite in professionnal_career.workSite %}
+                                {{ workSite.name }}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{ professionnal_career.startDate ? professionnal_career.startDate|date('Y-m') : '' }}
+                        </td>
+                        <td>
+                            {{ professionnal_career.duration }}
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a class="btn btn-outline-secondary-custom" title="Détail" href="{{ path('professionnal_careers_show', {'id': professionnal_career.id}) }}">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a class="btn btn-outline-warning" title="Modifier" href="{{ path('professionnal_careers_edit', {'id': professionnal_career.id}) }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                {{ include('admin/professionnal_careers/_delete_form.html.twig') }}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">
+                            Pas d'enregistrement
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

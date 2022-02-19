@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\UpdateWebsites;
 use App\Form\UpdateWebsitesType;
@@ -11,9 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/update/websites")
+ * @Route("/admin/update_websites")
+ * @IsGranted("ROLE_ADMIN")
  */
 class UpdateWebsitesController extends AbstractController
 {
@@ -22,7 +24,7 @@ class UpdateWebsitesController extends AbstractController
      */
     public function index(UpdateWebsitesRepository $updateWebsitesRepository): Response
     {
-        return $this->render('admin_pages/update_websites/index.html.twig', [
+        return $this->render('admin/update_websites/index.html.twig', [
             'update_websites' => $updateWebsitesRepository->findAll(),
         ]);
     }
@@ -46,7 +48,7 @@ class UpdateWebsitesController extends AbstractController
             return $this->redirectToRoute('update_websites_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/update_websites/new.html.twig', [
+        return $this->renderForm('admin/update_websites/new.html.twig', [
             'update_website' => $updateWebsite,
             'form' => $form,
         ]);
@@ -57,7 +59,7 @@ class UpdateWebsitesController extends AbstractController
      */
     public function show(UpdateWebsites $updateWebsite): Response
     {
-        return $this->render('admin_pages/update_websites/show.html.twig', [
+        return $this->render('admin/update_websites/show.html.twig', [
             'update_website' => $updateWebsite,
         ]);
     }
@@ -77,7 +79,7 @@ class UpdateWebsitesController extends AbstractController
             return $this->redirectToRoute('update_websites_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/update_websites/edit.html.twig', [
+        return $this->renderForm('admin/update_websites/edit.html.twig', [
             'update_website' => $updateWebsite,
             'form' => $form,
         ]);

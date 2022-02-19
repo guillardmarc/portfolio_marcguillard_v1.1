@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\Achievements;
 use App\Entity\PictureAchievements;
@@ -15,9 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/achievements")
+ * @Route("/admin/achievements")
+ * @IsGranted("ROLE_ADMIN")
  */
 class AchievementsController extends AbstractController
 {
@@ -26,7 +28,7 @@ class AchievementsController extends AbstractController
      */
     public function index(AchievementsRepository $achievementsRepository): Response
     {
-        return $this->render('admin_pages/achievements/index.html.twig', [
+        return $this->render('admin/achievements/index.html.twig', [
             'achievements' => $achievementsRepository->findAll(),
         ]);
     }
@@ -84,7 +86,7 @@ class AchievementsController extends AbstractController
             return $this->redirectToRoute('achievements_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/achievements/new.html.twig', [
+        return $this->renderForm('admin/achievements/new.html.twig', [
             'achievement' => $achievement,
             'form' => $form,
         ]);
@@ -95,7 +97,7 @@ class AchievementsController extends AbstractController
      */
     public function show(Achievements $achievement): Response
     {
-        return $this->render('admin_pages/achievements/show.html.twig', [
+        return $this->render('admin/achievements/show.html.twig', [
             'achievement' => $achievement,
         ]);
     }
@@ -150,7 +152,7 @@ class AchievementsController extends AbstractController
             return $this->redirectToRoute('achievements_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/achievements/edit.html.twig', [
+        return $this->renderForm('admin/achievements/edit.html.twig', [
             'achievement' => $achievement,
             'form' => $form,
         ]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\WebTechnologies;
 use App\Form\WebTechnologiesType;
@@ -13,9 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/web/technologies")
+ * @Route("/admin/web_technologies")
+ * @IsGranted("ROLE_ADMIN")
  */
 class WebTechnologiesController extends AbstractController
 {
@@ -24,7 +26,7 @@ class WebTechnologiesController extends AbstractController
      */
     public function index(WebTechnologiesRepository $webTechnologiesRepository): Response
     {
-        return $this->render('admin_pages/web_technologies/index.html.twig', [
+        return $this->render('admin/web_technologies/index.html.twig', [
             'web_technologies' => $webTechnologiesRepository->findAll(),
         ]);
     }
@@ -74,7 +76,7 @@ class WebTechnologiesController extends AbstractController
             return $this->redirectToRoute('web_technologies_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/web_technologies/new.html.twig', [
+        return $this->renderForm('admin/web_technologies/new.html.twig', [
             'web_technology' => $webTechnology,
             'form' => $form,
         ]);
@@ -85,7 +87,7 @@ class WebTechnologiesController extends AbstractController
      */
     public function show(WebTechnologies $webTechnology): Response
     {
-        return $this->render('admin_pages/web_technologies/show.html.twig', [
+        return $this->render('admin/web_technologies/show.html.twig', [
             'web_technology' => $webTechnology,
         ]);
     }
@@ -132,7 +134,7 @@ class WebTechnologiesController extends AbstractController
             return $this->redirectToRoute('web_technologies_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/web_technologies/edit.html.twig', [
+        return $this->renderForm('admin/web_technologies/edit.html.twig', [
             'web_technology' => $webTechnology,
             'form' => $form,
         ]);

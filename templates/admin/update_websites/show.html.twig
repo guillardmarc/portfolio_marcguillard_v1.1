@@ -1,0 +1,90 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Mise à jour du site "{{ update_website.name }}"{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Presentation "{{ update_website.name }}"
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-secondary-custom"  title="Retour vers la liste" href="{{ path('update_websites_index') }}">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                        <a class="btn btn-outline-warning" title="Modifier" href="{{ path('update_websites_edit', {'id': update_website.id}) }}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        {{ include('admin/update_websites/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Détail section #}
+    <section class="card pt-5 bg-glass">
+        <div class="card-body">
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            Titre
+                        </th>
+                        <td>
+                            {{ update_website.name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            Description
+                        </th>
+                        <td>
+                            {{ update_website.content|raw }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th class="text-muted small" scope="col">
+                            Id
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de création
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de modification
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Version du site
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-muted small">
+                            {{ update_website.id }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ update_website.createdAt ? update_website.createdAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ update_website.modifiedAt ? update_website.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ update_website.websites.version }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+
+{% endblock %}

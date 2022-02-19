@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\Establishments;
 use App\Form\EstablishmentsType;
@@ -13,9 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/establishments")
+ * @Route("/admin/establishments")
+ * @IsGranted("ROLE_ADMIN")
  */
 class EstablishmentsController extends AbstractController
 {
@@ -24,7 +26,7 @@ class EstablishmentsController extends AbstractController
      */
     public function index(EstablishmentsRepository $establishmentsRepository): Response
     {
-        return $this->render('admin_pages/establishments/index.html.twig', [
+        return $this->render('admin/establishments/index.html.twig', [
             'establishments' => $establishmentsRepository->findAll(),
         ]);
     }
@@ -74,7 +76,7 @@ class EstablishmentsController extends AbstractController
             return $this->redirectToRoute('establishments_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/establishments/new.html.twig', [
+        return $this->renderForm('admin/establishments/new.html.twig', [
             'establishment' => $establishment,
             'form' => $form,
         ]);
@@ -85,7 +87,7 @@ class EstablishmentsController extends AbstractController
      */
     public function show(Establishments $establishment): Response
     {
-        return $this->render('admin_pages/establishments/show.html.twig', [
+        return $this->render('admin/establishments/show.html.twig', [
             'establishment' => $establishment,
         ]);
     }
@@ -132,7 +134,7 @@ class EstablishmentsController extends AbstractController
             return $this->redirectToRoute('establishments_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/establishments/edit.html.twig', [
+        return $this->renderForm('admin/establishments/edit.html.twig', [
             'establishment' => $establishment,
             'form' => $form,
         ]);

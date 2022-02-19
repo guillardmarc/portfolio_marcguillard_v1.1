@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de la technologie web "{{ web_technology.name }}"{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Modification de la technologies web "{{ web_technology.name }}"
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-secondary-custom"  title="Retour vers la liste" href="{{ path('web_technologies_index') }}">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                        {{ include('admin/web_technologies/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('admin/web_technologies/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+   
+{% endblock %}

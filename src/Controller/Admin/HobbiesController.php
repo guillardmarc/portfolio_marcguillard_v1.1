@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\Hobbies;
 use App\Form\HobbiesType;
@@ -13,9 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/hobbies")
+ * @Route("/admin/hobbies")
+ * @IsGranted("ROLE_ADMIN")
  */
 class HobbiesController extends AbstractController
 {
@@ -24,7 +26,7 @@ class HobbiesController extends AbstractController
      */
     public function index(HobbiesRepository $hobbiesRepository): Response
     {
-        return $this->render('admin_pages/hobbies/index.html.twig', [
+        return $this->render('admin/hobbies/index.html.twig', [
             'hobbies' => $hobbiesRepository->findAll(),
         ]);
     }
@@ -74,7 +76,7 @@ class HobbiesController extends AbstractController
             return $this->redirectToRoute('hobbies_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/hobbies/new.html.twig', [
+        return $this->renderForm('admin/hobbies/new.html.twig', [
             'hobby' => $hobby,
             'form' => $form,
         ]);
@@ -85,7 +87,7 @@ class HobbiesController extends AbstractController
      */
     public function show(Hobbies $hobby): Response
     {
-        return $this->render('admin_pages/hobbies/show.html.twig', [
+        return $this->render('admin/hobbies/show.html.twig', [
             'hobby' => $hobby,
         ]);
     }
@@ -132,7 +134,7 @@ class HobbiesController extends AbstractController
             return $this->redirectToRoute('hobbies_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/hobbies/edit.html.twig', [
+        return $this->renderForm('admin/hobbies/edit.html.twig', [
             'hobby' => $hobby,
             'form' => $form,
         ]);

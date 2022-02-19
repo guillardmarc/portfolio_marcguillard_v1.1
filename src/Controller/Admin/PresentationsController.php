@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\Presentations;
 use App\Form\PresentationsType;
@@ -13,9 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/presentations")
+ * @Route("/admin_presentations")
+ * @IsGranted("ROLE_ADMIN")
  */
 class PresentationsController extends AbstractController
 {
@@ -24,7 +26,7 @@ class PresentationsController extends AbstractController
      */
     public function index(PresentationsRepository $presentationsRepository): Response
     {
-        return $this->render('admin_pages/presentations/index.html.twig', [
+        return $this->render('admin/presentations/index.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
         ]);
     }
@@ -74,7 +76,7 @@ class PresentationsController extends AbstractController
             return $this->redirectToRoute('presentations_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/presentations/new.html.twig', [
+        return $this->renderForm('admin/presentations/new.html.twig', [
             'presentation' => $presentation,
             'form' => $form,
         ]);
@@ -85,7 +87,7 @@ class PresentationsController extends AbstractController
      */
     public function show(Presentations $presentation): Response
     {
-        return $this->render('admin_pages/presentations/show.html.twig', [
+        return $this->render('admin/presentations/show.html.twig', [
             'presentation' => $presentation,
         ]);
     }
@@ -132,7 +134,7 @@ class PresentationsController extends AbstractController
             return $this->redirectToRoute('presentations_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/presentations/edit.html.twig', [
+        return $this->renderForm('admin/presentations/edit.html.twig', [
             'presentation' => $presentation,
             'form' => $form,
         ]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\admin;
 
 use App\Entity\ProfessionnalCareers;
 use App\Form\ProfessionnalCareersType;
@@ -11,9 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/professionnal/careers")
+ * @Route("/admin/professionnal_careers")
+ * @IsGranted("ROLE_ADMIN")
  */
 class ProfessionnalCareersController extends AbstractController
 {
@@ -22,7 +24,7 @@ class ProfessionnalCareersController extends AbstractController
      */
     public function index(ProfessionnalCareersRepository $professionnalCareersRepository): Response
     {
-        return $this->render('admin_pages/professionnal_careers/index.html.twig', [
+        return $this->render('admin/professionnal_careers/index.html.twig', [
             'professionnal_careers' => $professionnalCareersRepository->findAll(),
         ]);
     }
@@ -45,7 +47,7 @@ class ProfessionnalCareersController extends AbstractController
             return $this->redirectToRoute('professionnal_careers_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/professionnal_careers/new.html.twig', [
+        return $this->renderForm('admin/professionnal_careers/new.html.twig', [
             'professionnal_career' => $professionnalCareer,
             'form' => $form,
         ]);
@@ -56,7 +58,7 @@ class ProfessionnalCareersController extends AbstractController
      */
     public function show(ProfessionnalCareers $professionnalCareer): Response
     {
-        return $this->render('admin_pages/professionnal_careers/show.html.twig', [
+        return $this->render('admin/professionnal_careers/show.html.twig', [
             'professionnal_career' => $professionnalCareer,
         ]);
     }
@@ -76,7 +78,7 @@ class ProfessionnalCareersController extends AbstractController
             return $this->redirectToRoute('professionnal_careers_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_pages/professionnal_careers/edit.html.twig', [
+        return $this->renderForm('admin/professionnal_careers/edit.html.twig', [
             'professionnal_career' => $professionnalCareer,
             'form' => $form,
         ]);

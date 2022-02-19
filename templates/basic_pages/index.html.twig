@@ -41,112 +41,209 @@
             <h3 class="display-3 blend-mode-multiple mb-3">
                 Mes réalisations
             </h3>
+            
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    {% for key, achievement in achievements %}
+                        {% if  key == 0 %}
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ key }}" class="active" aria-current="true" aria-label="Slide {{key }}"></button>
+                        {% else %}
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ key }}" aria-label="Slide {{ key }}"></button>
+                        {% endif %}                        
+                    {% endfor %}
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-lg-6 form-02">
-                                <img class="img-50" src="https://loremflickr.com/320/240?lock=10" alt="">
-                            </div>
-                            <div class="col-lg-6">
-                                <h5 class="display-5">
-                                    Titre réalisation
-                                </h5>
-                                <hr class="my-2">
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga asperiores similique aspernatur ipsam tenetur numquam nesciunt quas sed! Rerum, unde! Veritatis magni sunt, consequatur voluptatum et maxime iste excepturi maiores.
-                                    Aliquam ipsa reiciendis et iusto cumque asperiores sapiente voluptate eum minima ab at officiis nobis dolorum obcaecati beatae eligendi magni quisquam autem, rem laborum, nemo modi deleniti magnam quasi? Amet!
-                                    Cupiditate, sequi! Consequuntur ducimus eveniet sequi odit voluptates unde alias incidunt quis necessitatibus nesciunt, quasi velit. Quas, corrupti quibusdam. Voluptatem quos nulla ut dignissimos dolores quasi rem hic eos odit?
-                                </p>
-                                <div class="d-grid gap-2 col-6 mx-auto my-3">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-outline-secondary-custom">Lien GIT</a>
-                                        <a href="#" class="btn btn-outline-secondary-custom">Lien HTML</a>
-                                        <a href="#" class="btn btn-outline-secondary-custom">Plus d'info</a>
+                    {% for key, achievement in achievements %}
+                        {% if  key == 0 %}
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-lg-6 form-02">
+                                        {% for key, picture in achievement.pictures %}
+                                            {% if key == 0 %}
+                                                <img class="img-50" src="{{ asset(picture.link) }}" alt="">
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="display-5">
+                                            {{ achievement.name}}
+                                        </h5>
+                                        <hr class="my-2">
+                                        {{ achievement.content|raw }}
+                                        <div class="d-grid gap-2 col-6 mx-auto my-3">
+                                            <div class="btn-group">
+                                                <a href="{{ achievement.gitLink }}" class="btn btn-outline-secondary-custom">Lien GIT</a>
+                                                {% if achievement.httpLink %}
+                                                    <a href="{{ achievement.httpLink }}" class="btn btn-outline-secondary-custom">Lien HTML</a>
+                                                {% endif %}
+                                                <a class="btn btn-outline-secondary-custom" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Plus d'info</a>
+                                            </div>
+                                        </div>
+                                        <div class="collapse shadow mb-5" id="collapseExample">
+                                            <div class="card card-body">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Autres images
+                                                            </th>
+                                                            <td>
+                                                                {% for key, picture in achievement.pictures %}
+                                                                    {% if key != 0 %}
+                                                                        <img class="img-20" src="{{ asset(picture.link) }}" alt="">
+                                                                    {% else %}
+                                                                        <h6 class="text-uppercase">
+                                                                            Pas images suplémentaires
+                                                                        </h6>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            {% if achievement.endDate %}
+                                                                <th scope="row">
+                                                                    Date de fin
+                                                                </th>
+                                                                <td>
+                                                                    {{ achievement.endDate ? achievement.endDate|date('d-m-Y H:i:s') : '' }}
+                                                                </td>
+                                                            {% endif %}
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Date de mise en ligne
+                                                            </th>
+                                                            <td> 
+                                                                {% if achievement.releaseDate %}
+                                                                    {{ achievement.releaseDate ? achievement.releaseDate|date('Y-m-d') : '' }}
+                                                                {% else %}
+                                                                    Pas en ligne
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Date de mise à jour
+                                                            </th>
+                                                            <td>
+                                                                {% if achievement.updateDate %}
+                                                                    {{ achievement.updateDate ? achievement.updateDate|date('Y-m-d') : '' }}
+                                                                {% else %}
+                                                                    Pas de mise à jour
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-evenly small">
+                                            <span>
+                                                Date de lancement: {{ achievement.startDate ? achievement.startDate|date('d-m-Y H:i:s') : '' }}
+                                            </span>
+                                            <span>
+                                                Statut: {{ achievement.statut }}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-evenly small">
-                                    <span>
-                                        Date de création: 11/01/1983
-                                    </span>
-                                    <span>
-                                        Date de mise à jour: 11/02/1983
-                                    </span>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-lg-6 form-02">
-                                <img class="img-50" src="https://loremflickr.com/320/240?lock=11" alt="">
-                            </div>
-                            <div class="col-lg-6">
-                                <h5 class="display-5">
-                                    Titre réalisation
-                                </h5>
-                                <hr class="my-2">
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga asperiores similique aspernatur ipsam tenetur numquam nesciunt quas sed! Rerum, unde! Veritatis magni sunt, consequatur voluptatum et maxime iste excepturi maiores.
-                                    Aliquam ipsa reiciendis et iusto cumque asperiores sapiente voluptate eum minima ab at officiis nobis dolorum obcaecati beatae eligendi magni quisquam autem, rem laborum, nemo modi deleniti magnam quasi? Amet!
-                                    Cupiditate, sequi! Consequuntur ducimus eveniet sequi odit voluptates unde alias incidunt quis necessitatibus nesciunt, quasi velit. Quas, corrupti quibusdam. Voluptatem quos nulla ut dignissimos dolores quasi rem hic eos odit?
-                                </p>
-                                <div class="d-grid gap-2 col-6 mx-auto my-3">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-outline-secondary-custom">Lien GIT</a>
-                                        <a href="#" class="btn btn-outline-secondary-custom">Lien HTML</a>
-                                        <a href="#" class="btn btn-outline-secondary-custom">Plus d'info</a>
+                        {% else %}
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-lg-6 form-02">
+                                        {% for key, picture in achievement.pictures %}
+                                            {% if key == 0 %}
+                                                <img class="img-50" src="{{ asset(picture.link) }}" alt="">
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="display-5">
+                                            {{ achievement.name}}
+                                        </h5>
+                                        <hr class="my-2">
+                                        {{ achievement.content|raw }}
+                                        <div class="d-grid gap-2 col-6 mx-auto my-3">
+                                            <div class="btn-group">
+                                                <a href="{{ achievement.gitLink }}" class="btn btn-outline-secondary-custom">Lien GIT</a>
+                                                {% if achievement.httpLink %}
+                                                    <a href="{{ achievement.httpLink }}" class="btn btn-outline-secondary-custom">Lien HTML</a>
+                                                {% endif %}
+                                                <a class="btn btn-outline-secondary-custom" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Plus d'info</a>
+                                            </div>
+                                        </div>
+                                        <div class="collapse shadow mb-5" id="collapseExample">
+                                            <div class="card card-body">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Autres images
+                                                            </th>
+                                                            <td>
+                                                                {% for key, picture in achievement.pictures %}
+                                                                    {% if key != 0 %}
+                                                                        <img class="img-20" src="{{ asset(picture.link) }}" alt="">
+                                                                    {% else %}
+                                                                        <h6 class="text-uppercase">
+                                                                            Pas images suplémentaires
+                                                                        </h6>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            {% if achievement.endDate %}
+                                                                <th scope="row">
+                                                                    Date de fin
+                                                                </th>
+                                                                <td>
+                                                                    {{ achievement.endDate ? achievement.endDate|date('d-m-Y H:i:s') : '' }}
+                                                                </td>
+                                                            {% endif %}
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Date de mise en ligne
+                                                            </th>
+                                                            <td> 
+                                                                {% if achievement.releaseDate %}
+                                                                    {{ achievement.releaseDate ? achievement.releaseDate|date('Y-m-d') : '' }}
+                                                                {% else %}
+                                                                    Pas en ligne
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Date de mise à jour
+                                                            </th>
+                                                            <td>
+                                                                {% if achievement.updateDate %}
+                                                                    {{ achievement.updateDate ? achievement.updateDate|date('Y-m-d') : '' }}
+                                                                {% else %}
+                                                                    Pas de mise à jour
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-evenly small">
+                                            <span>
+                                                Date de création: {{ achievement.startDate ? achievement.startDate|date('d-m-Y H:i:s') : '' }}
+                                            </span>
+                                            <span>
+                                                Statut: {{ achievement.statut }}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-evenly small">
-                                    <span>
-                                        Date de création: 11/01/1983
-                                    </span>
-                                    <span>
-                                        Date de mise à jour: 11/02/1983
-                                    </span>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-lg-6 form-02">
-                                <img class="img-50" src="https://loremflickr.com/320/240?lock=12" alt="">
-                            </div>
-                            <div class="col-lg-6">
-                                <h5 class="display-5">
-                                    Titre réalisation
-                                </h5>
-                                <hr class="my-2">
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga asperiores similique aspernatur ipsam tenetur numquam nesciunt quas sed! Rerum, unde! Veritatis magni sunt, consequatur voluptatum et maxime iste excepturi maiores.
-                                    Aliquam ipsa reiciendis et iusto cumque asperiores sapiente voluptate eum minima ab at officiis nobis dolorum obcaecati beatae eligendi magni quisquam autem, rem laborum, nemo modi deleniti magnam quasi? Amet!
-                                    Cupiditate, sequi! Consequuntur ducimus eveniet sequi odit voluptates unde alias incidunt quis necessitatibus nesciunt, quasi velit. Quas, corrupti quibusdam. Voluptatem quos nulla ut dignissimos dolores quasi rem hic eos odit?
-                                </p>
-                                <div class="d-grid gap-2 col-6 mx-auto my-3">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-outline-secondary-custom">Lien GIT</a>
-                                        <a href="#" class="btn btn-outline-secondary-custom">Lien HTML</a>
-                                        <a href="#" class="btn btn-outline-secondary-custom">Plus d'info</a>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-evenly small">
-                                    <span>
-                                        Date de création: 11/01/1983
-                                    </span>
-                                    <span>
-                                        Date de mise à jour: 11/02/1983
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {% endif %}                        
+                    {% endfor %}
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -302,7 +399,7 @@
                                                 </th>
                                                 <td>
                                                     {% if professionnalcareer.employer.httpLink %}
-                                                        <a href="{{ professionnalcareer.employer.httpLink }} ">
+                                                        <a target="_blank" href="{{ professionnalcareer.employer.httpLink }} ">
                                                             <i class="bi bi-link"></i>
                                                             Site web
                                                         </a>

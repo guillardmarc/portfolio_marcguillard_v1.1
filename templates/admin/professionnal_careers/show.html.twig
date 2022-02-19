@@ -1,0 +1,125 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Etape carriere professionnel "{{ professionnal_career.id }}"{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-10">
+                    <h1 class="display-1">
+                        Etape carriere professionnel "{{ professionnal_career.id }}"
+                    </h1>
+                </div>
+                <div class="col-lg-2">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-secondary-custom"  title="Retour vers la liste" href="{{ path('professionnal_careers_index') }}">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                        <a class="btn btn-outline-warning" title="Modifier" href="{{ path('professionnal_careers_edit', {'id': professionnal_career.id}) }}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        {{ include('admin/professionnal_careers/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Détail section #}
+    <section class="card pt-5 bg-glass">
+        <div class="card-body">
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <th>
+                            Nom de l'étape
+                        </th>
+                        <td>
+                            {{ professionnal_career.name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Description de l'étape
+                        </th>
+                        <td>
+                            {{ professionnal_career.content|raw }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Type de l'étape
+                        </th>
+                        <td>
+                            {{ professionnal_career.Type }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Type de contrat
+                        </th>
+                        <td>
+                            {{ professionnal_career.contract }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Entreprise
+                        </th>
+                        <td>
+                            {{ professionnal_career.employer.name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Lieu de travail
+                        </th>
+                        <td>
+                            {% for workSite in professionnal_career.workSite %}
+                                {{ workSite.name }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date de début</th>
+                        <td>{{ professionnal_career.startDate ? professionnal_career.startDate|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Durée</th>
+                        <td>{{ professionnal_career.duration }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th class="text-muted small" scope="col">
+                            Id
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de création
+                        </th>
+                        <th class="text-muted small" scope="col">
+                            Date de modification
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-muted small">
+                            {{ professionnal_career.id }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ professionnal_career.createdAt ? professionnal_career.createdAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                        <td class="text-muted small">
+                            {{ professionnal_career.modifiedAt ? professionnal_career.modifiedAt|date('Y-m-d H:i:s') : '' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

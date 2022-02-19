@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\WebTechnologies;
 use App\Form\ContactMeType;
+use App\Repository\AchievementsRepository;
 use App\Repository\HobbiesRepository;
 use App\Repository\PresentationsRepository;
 use App\Repository\ProfessionnalCareersRepository;
@@ -22,6 +23,7 @@ class BasicPagesController extends AbstractController
      * @Route("/", name="app_home")
      */
     public function home(
+        AchievementsRepository $achievementsRepository,
         HobbiesRepository $hobbiesRepository,
         PresentationsRepository $presentationsRepository,
         ProfessionnalCareersRepository $professionnalCareersRepository,
@@ -61,6 +63,7 @@ class BasicPagesController extends AbstractController
         }
 
         return $this->render('basic_pages/index.html.twig', [
+            'achievements'=>$achievementsRepository->findBy([], ['startDate'=>'DESC']),
             'hobbies'=>$hobbiesRepository->findAll(),
             'professionnalcareers'=>$professionnalCareersRepository->findBy([], ['startDate'=>'DESC']),
             'webTechnologies'=>$webTechnologiesRepository->findBy(['isPrefered'=>True], ['id'=>'DESC']),
