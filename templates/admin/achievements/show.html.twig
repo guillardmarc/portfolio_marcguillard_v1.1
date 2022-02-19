@@ -80,6 +80,19 @@
                             </tr>
                             <tr>
                                 <th>
+                                    technologies
+                                </th>
+                                <td>
+                                    {% for technology in achievement.technology %}
+                                        <div>
+                                            <img class="square-img-15" src="{{ asset(technology.pictureLink) }}" alt="">
+                                        </div>
+                                        {{ technology.name }} 
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
                                     Lien vers le dépot GIT
                                 </th>
                                 <td>

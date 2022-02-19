@@ -72,9 +72,9 @@
                                         {{ achievement.content|raw }}
                                         <div class="d-grid gap-2 col-6 mx-auto my-3">
                                             <div class="btn-group">
-                                                <a href="{{ achievement.gitLink }}" class="btn btn-outline-secondary-custom">Lien GIT</a>
+                                                <a target="_blank" href="{{ achievement.gitLink }}" class="btn btn-outline-secondary-custom">Lien GIT</a>
                                                 {% if achievement.httpLink %}
-                                                    <a href="{{ achievement.httpLink }}" class="btn btn-outline-secondary-custom">Lien HTML</a>
+                                                    <a target="_blank" href="{{ achievement.httpLink }}" class="btn btn-outline-secondary-custom">Lien HTML</a>
                                                 {% endif %}
                                                 <a class="btn btn-outline-secondary-custom" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Plus d'info</a>
                                             </div>
@@ -96,6 +96,16 @@
                                                                             Pas images suplémentaires
                                                                         </h6>
                                                                     {% endif %}
+                                                                {% endfor %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                technologies
+                                                            </th>
+                                                            <td>
+                                                                {% for technology in achievement.technology %}
+                                                                        <img class="square-img-15" src="{{ asset(technology.pictureLink) }}" alt="">
                                                                 {% endfor %}
                                                             </td>
                                                         </tr>
@@ -166,9 +176,9 @@
                                         {{ achievement.content|raw }}
                                         <div class="d-grid gap-2 col-6 mx-auto my-3">
                                             <div class="btn-group">
-                                                <a href="{{ achievement.gitLink }}" class="btn btn-outline-secondary-custom">Lien GIT</a>
+                                                <a target="_blank" href="{{ achievement.gitLink }}" class="btn btn-outline-secondary-custom">Lien GIT</a>
                                                 {% if achievement.httpLink %}
-                                                    <a href="{{ achievement.httpLink }}" class="btn btn-outline-secondary-custom">Lien HTML</a>
+                                                    <a target="_blank" href="{{ achievement.httpLink }}" class="btn btn-outline-secondary-custom">Lien HTML</a>
                                                 {% endif %}
                                                 <a class="btn btn-outline-secondary-custom" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Plus d'info</a>
                                             </div>
@@ -190,6 +200,16 @@
                                                                             Pas images suplémentaires
                                                                         </h6>
                                                                     {% endif %}
+                                                                {% endfor %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                technologies
+                                                            </th>
+                                                            <td>
+                                                                {% for technology in achievement.technology %}
+                                                                        <img class="square-img-15" src="{{ asset(technology.pictureLink) }}" alt="">
                                                                 {% endfor %}
                                                             </td>
                                                         </tr>
