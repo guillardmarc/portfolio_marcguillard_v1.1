@@ -56,17 +56,17 @@ class WebTechnologiesType extends AbstractType
                  'label' => 'Technologie préféré',
                  'required'=>false,
              ])
-            ->add('achievements', EntityType ::class,  [
-                'attr' => [
-                    'class' => 'd-flex justify-content-evenly',
-                    'placeholder' => 'Version du site'
-                ],
-                'choice_label' => 'version',
-                'class'=> Achievements::class,
-                'expanded' => true,
-                'multiple' => true,
-                'required'=>false
-            ])
+            // ->add('achievements', EntityType ::class,  [
+            //     'attr' => [
+            //         'class' => 'd-flex justify-content-evenly',
+            //         'placeholder' => 'Version du site'
+            //     ],
+            //     'choice_label' => 'version',
+            //     'class'=> Achievements::class,
+            //     'expanded' => true,
+            //     'multiple' => true,
+            //     'required'=>false
+            // ])
         ;
     }
 
